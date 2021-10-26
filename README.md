@@ -1,28 +1,34 @@
-# Project PROJECT2
+# Personal Projects
 
 ### Student Info
 
--   Name: Chase Byrne
--   Section: 05
+Name: Chase Byrne
 
 ### Description
 
+Alternative Boost
+-Timespan: September 2021 - Current 
+-Unity Runner Game Currently being worked on, in early development
+-Controllable via UI buttons
 
+Gravity
+-Timespan: September 2021 - October 2021
+-C++ SFML Project
+-WASD move the player, G swaps gravity applied to player
 
-### User Responsibilities
-
-A and D rotate player, W accelerates
-Space shoots bullets
-
-### Requirements not completed
-
-Bullets keep moving even after collision with an asteroid, though they do not continue to collide.
-Asteroids do not rotate. It is commented out in my code, as it results in the asteroids moving in circles.
+Space Shooter
+-Timespan: September 2021 - October 2021
+-2D Unity Asteroids like game
+-A and D rotate player, W accelerates, Space shoots bullets
 
 ### Sources
-Asked questions to Professor Brennan, and asked a friend about which of 
-two Bullet method spawning methods I was trying was would be better 
 
-Sprites used from: https://opengameart.org/content/shmup-ships
-			   https://play.google.com/store/apps/details?id=com.aperico.android.stardust
-			   https://aperico.com/
+Gravity project has some work based on the letures of arwigm@rit.edu
+
+Space shooter Vehicle class based on in lecture from eabigm@g.rit.edu
+
+Sprites in Space Shooter from: https://opengameart.org/content/shmup-ships
+			   		    https://play.google.com/store/apps/details?id=com.aperico.android.stardust
+			   		    https://aperico.com/
+			   		    
+
