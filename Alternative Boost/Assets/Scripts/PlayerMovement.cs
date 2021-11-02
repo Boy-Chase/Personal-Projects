@@ -40,8 +40,11 @@ public class PlayerMovement : MonoBehaviour
         //jump movement
         if (jumpGo)
         {
-            GetComponent<Rigidbody>().AddForce(0f, 250f, 0f);
-            jumpGo = false;
+            if (transform.position.y == 1)
+            {
+                GetComponent<Rigidbody>().AddForce(0f, 250f, 0f);
+                jumpGo = false;
+            }
         }
 
         //boost movement
