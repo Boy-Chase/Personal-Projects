@@ -7,42 +7,25 @@ public class Health : MonoBehaviour
     // amount of health at start
     public int health = 3;
 
-    // invincibility frames
-    public int iFrames = 1000;
+    public bool onGround = false;
 
-    // runs damage in update
-    bool collide = false;
-
-    // Start is called before the first frame update
-    void Start()
+    // runs on collision
+    void OnCollisionEnter(Collision objectHit)
     {
-       
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        iFrames--;
-
-        // player can be hurt
-        if (iFrames < 0 && collide)
+        // used in PlayerMovement for jump check
+        if (objectHit.gameObject.GetComponent<Ground>() != null)
         {
-            // decrement health
-            health--;
-
-            // reset iFrames
-            iFrames = 1000;
+            onGround = true;
         }
-        // if player has iFrames, collision cannot occur
-        else
+
+        // detects if collsion damage should be dealt to player
+        if (objectHit.gameObject.GetComponent<Harmful>() != null)
         {
-            collide = false;
-        }
-    }
+            // damage dealt
+            health -= objectHit.gameObject.GetComponent<Harmful>().damage;
 
-    // called in harmful
-    public void dealDamage()
-    {
-        collide = true;
+            // destroys obstacle
+            Destroy(objectHit.gameObject);
+        }
     }
 }
