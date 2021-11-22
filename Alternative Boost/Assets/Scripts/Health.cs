@@ -9,6 +9,8 @@ public class Health : MonoBehaviour
 
     public bool onGround = false;
 
+    public bool onWall = false;
+
     // runs on collision
     void OnCollisionEnter(Collision objectHit)
     {
@@ -16,6 +18,12 @@ public class Health : MonoBehaviour
         if (objectHit.gameObject.GetComponent<Ground>() != null)
         {
             onGround = true;
+        }
+
+        // used in PlayerMovement for wall run
+        if (objectHit.gameObject.GetComponent<Wall>() != null)
+        {
+            onWall = true;
         }
 
         // detects if collsion damage should be dealt to player

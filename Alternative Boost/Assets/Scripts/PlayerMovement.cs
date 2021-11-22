@@ -26,14 +26,16 @@ public class PlayerMovement : MonoBehaviour
         //left movement
         if (leftGo)
         {
-            transform.Translate(1f, 0f, 0f);
+            // transform.Translate(1f, 0f, 0f);
+            GetComponent<Rigidbody>().AddForce(25f, 0f, 0f);
             leftGo = false;
         }
 
         //right movement
         if (rightGo)
         {
-            transform.Translate(-1f, 0, 0);
+            // transform.Translate(-1f, 0, 0);
+            GetComponent<Rigidbody>().AddForce(-25f, 0f, 0f);
             rightGo = false;
         }
 
@@ -52,6 +54,12 @@ public class PlayerMovement : MonoBehaviour
         if (boostGo)
         {
             StartCoroutine(boostWait());
+        }
+
+        // wall run
+        if (gameObject.GetComponent<Health>().onWall)
+        {
+            GetComponent<Rigidbody>().AddForce(0f, 1.05f, 0f);
         }
     }
 
