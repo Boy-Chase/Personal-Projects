@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     bool rightGo;
     bool jumpGo;
     bool boostGo;
+
+    // keyboard input
+    private Vector2 playerInput;
 
     // keep track of how long wall run has been going
     public int wallRunCounter = 0;
@@ -32,23 +36,31 @@ public class PlayerMovement : MonoBehaviour
             wallRunCounter = 0;
         }
 
-        //left movement
+        // button left movement
         if (leftGo)
         {
-            // transform.Translate(1f, 0f, 0f);
-            GetComponent<Rigidbody>().AddForce(35f, 0f, 0f);
+            GetComponent<Rigidbody>().AddForce(100f, 0f, 0f);
             leftGo = false;
         }
-
-        //right movement
-        if (rightGo)
+        // key left movement
+        if (playerInput.x < 0)
         {
-            // transform.Translate(-1f, 0, 0);
-            GetComponent<Rigidbody>().AddForce(-35f, 0f, 0f);
-            rightGo = false;
+            GetComponent<Rigidbody>().AddForce(5f, 0f, 0f);
         }
 
-        //jump movement
+        // button right movement
+        if (rightGo)
+        {
+            GetComponent<Rigidbody>().AddForce(-100f, 0f, 0f);
+            rightGo = false;
+        }
+        // key right movement
+        if (0 < playerInput.x)
+        {
+            GetComponent<Rigidbody>().AddForce(-5f, 0f, 0f);
+        }
+
+        // button jump movement
         if (jumpGo)
         {
             if (gameObject.GetComponent<Health>().onGround)
@@ -59,7 +71,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        //boost movement
+        // key boost movement
+        if (0 < playerInput.y)
+        {
+            boostGo = true;
+        }
+        // button boost movement
         if (boostGo)
         {
             StartCoroutine(boostWait());
@@ -69,14 +86,14 @@ public class PlayerMovement : MonoBehaviour
         if (gameObject.GetComponent<Health>().onWall)
         {
             // if hasn't been on wall for set frames
-            if (wallRunCounter < 400)
+            if (wallRunCounter < 300)
             {
                 // add force and increment
-                GetComponent<Rigidbody>().AddForce(0f, 2.0f, 0f);
+                GetComponent<Rigidbody>().AddForce(0f, 3.3f, 0f);
                 wallRunCounter++;
             }
             // if at set frames
-            if (wallRunCounter == 399)
+            if (wallRunCounter == 299)
             {
                 // wall is on right
                 if (gameObject.GetComponent<Health>().wallIsRight)
@@ -94,25 +111,25 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
-    //called on ButtonLeft
+    // called on ButtonLeft
     public void moveLeft()
     {
         leftGo = true;
     }
 
-    //called on ButtonRight
+    // called on ButtonRight
     public void moveRight()
     {
         rightGo = true;
     }
 
-    //called on ButtonJump
+    // called on ButtonJump
     public void jumpUp()
     {
         jumpGo = true;
     }
 
-    //called on ButtonBoost
+    // called on ButtonBoost
     public void boostForward()
     {
         boostGo = true;
@@ -120,11 +137,23 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator boostWait()
     {
-        GetComponent<Rigidbody>().AddForce(0f, 0f, -0.1f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(0f, 0f, -0.2f, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1f);
 
-        GetComponent<Rigidbody>().AddForce(0f, 0f, 0.1f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(0f, 0f, 0.2f, ForceMode.Impulse);
         boostGo = false;
+    }
+
+    // gets input
+    public void OnMove(InputValue value)
+    {
+        playerInput = value.Get<Vector2>();
+    }
+
+    // key jump
+    public void OnJumpNow(InputValue value)
+    {
+        jumpGo = true;
     }
 }
