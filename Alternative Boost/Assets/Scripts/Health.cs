@@ -11,6 +11,9 @@ public class Health : MonoBehaviour
 
     public bool onWall = false;
 
+    // wall info to pass to PlayerMovement
+    public bool wallIsRight;
+
     // runs on collision
     void OnCollisionEnter(Collision objectHit)
     {
@@ -24,6 +27,7 @@ public class Health : MonoBehaviour
         if (objectHit.gameObject.GetComponent<Wall>() != null)
         {
             onWall = true;
+            wallIsRight = objectHit.gameObject.GetComponent<Wall>().right;
         }
 
         // detects if collsion damage should be dealt to player

@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
         if (leftGo)
         {
             // transform.Translate(1f, 0f, 0f);
-            GetComponent<Rigidbody>().AddForce(25f, 0f, 0f);
+            GetComponent<Rigidbody>().AddForce(35f, 0f, 0f);
             leftGo = false;
         }
 
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if (rightGo)
         {
             // transform.Translate(-1f, 0, 0);
-            GetComponent<Rigidbody>().AddForce(-25f, 0f, 0f);
+            GetComponent<Rigidbody>().AddForce(-35f, 0f, 0f);
             rightGo = false;
         }
 
@@ -66,6 +66,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 GetComponent<Rigidbody>().AddForce(0f, 2.0f, 0f);
                 wallRunCounter++;
+            }
+            if (wallRunCounter == 299)
+            {
+                // wall is on right
+                if (gameObject.GetComponent<Health>().wallIsRight)
+                {
+                    // pop off wall
+                    GetComponent<Rigidbody>().AddForce(100f, 0f, 0f);
+                }
+                // wall is on left
+                else
+                {
+                    // pop off wall
+                    GetComponent<Rigidbody>().AddForce(-70f, 0f, 0f);
+                }
             }
         }
         else
