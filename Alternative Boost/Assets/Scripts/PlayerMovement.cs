@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     bool jumpGo;
     bool boostGo;
 
+    // keep track of how long wall run has been going
+    int wallRunCounter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +62,15 @@ public class PlayerMovement : MonoBehaviour
         // wall run
         if (gameObject.GetComponent<Health>().onWall)
         {
-            GetComponent<Rigidbody>().AddForce(0f, 1.05f, 0f);
+            if (wallRunCounter < 300)
+            {
+                GetComponent<Rigidbody>().AddForce(0f, 2.0f, 0f);
+                wallRunCounter++;
+            }
+        }
+        else
+        {
+            wallRunCounter = 0;
         }
     }
 
