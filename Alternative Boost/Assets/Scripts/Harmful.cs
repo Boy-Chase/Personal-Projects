@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Harmful : MonoBehaviour
 {
-    // damage this object deals oon collision
+    // damage this object deals on collision
 
     [SerializeField]
     public int damage = 1;
