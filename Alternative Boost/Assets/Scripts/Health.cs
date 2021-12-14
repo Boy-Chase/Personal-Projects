@@ -22,12 +22,20 @@ public class Health : MonoBehaviour
         {
             onGround = true;
         }
+        else
+        {
+            onGround = false;
+        }
 
         // used in PlayerMovement for wall run
         if (objectHit.gameObject.GetComponent<Wall>() != null)
         {
             onWall = true;
             wallIsRight = objectHit.gameObject.GetComponent<Wall>().right;
+        }
+        else
+        {
+            onWall = false;
         }
 
         // detects if collsion damage should be dealt to player

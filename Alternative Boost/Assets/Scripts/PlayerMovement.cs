@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     bool boostGo;
 
     // keep track of how long wall run has been going
-    int wallRunCounter = 0;
+    public int wallRunCounter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,12 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // refreshes wall run if onGround but not onWall
+        if (gameObject.GetComponent<Health>().onGround && !gameObject.GetComponent<Health>().onWall)
+        {
+            wallRunCounter = 0;
+        }
+
         //left movement
         if (leftGo)
         {
@@ -62,18 +68,21 @@ public class PlayerMovement : MonoBehaviour
         // wall run
         if (gameObject.GetComponent<Health>().onWall)
         {
-            if (wallRunCounter < 300)
+            // if hasn't been on wall for set frames
+            if (wallRunCounter < 400)
             {
+                // add force and increment
                 GetComponent<Rigidbody>().AddForce(0f, 2.0f, 0f);
                 wallRunCounter++;
             }
-            if (wallRunCounter == 299)
+            // if at set frames
+            if (wallRunCounter == 399)
             {
                 // wall is on right
                 if (gameObject.GetComponent<Health>().wallIsRight)
                 {
                     // pop off wall
-                    GetComponent<Rigidbody>().AddForce(100f, 0f, 0f);
+                    GetComponent<Rigidbody>().AddForce(70f, 0f, 0f);
                 }
                 // wall is on left
                 else
@@ -83,12 +92,8 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-        else
-        {
-            wallRunCounter = 0;
-        }
     }
-
+    
     //called on ButtonLeft
     public void moveLeft()
     {
