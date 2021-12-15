@@ -99,13 +99,13 @@ public class PlayerMovement : MonoBehaviour
                 if (gameObject.GetComponent<Health>().wallIsRight)
                 {
                     // pop off wall
-                    GetComponent<Rigidbody>().AddForce(70f, 0f, 0f);
+                    GetComponent<Rigidbody>().AddForce(100f, 0f, 0f);
                 }
                 // wall is on left
                 else
                 {
                     // pop off wall
-                    GetComponent<Rigidbody>().AddForce(-70f, 0f, 0f);
+                    GetComponent<Rigidbody>().AddForce(-100f, 0f, 0f);
                 }
             }
         }
@@ -137,11 +137,11 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator boostWait()
     {
-        GetComponent<Rigidbody>().AddForce(0f, 0f, -0.2f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(0f, 0f, -0.3f, ForceMode.Impulse);
 
         yield return new WaitForSeconds(1f);
 
-        GetComponent<Rigidbody>().AddForce(0f, 0f, 0.2f, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(0f, 0f, 0.3f, ForceMode.Impulse);
         boostGo = false;
     }
 
