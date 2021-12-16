@@ -46,6 +46,13 @@ public class Health : MonoBehaviour
 
             // destroys obstacle
             Destroy(objectHit.gameObject);
+
+            // destroy player + close app. if out of health
+            if (health == 0)
+            {
+                Destroy(gameObject);
+                Application.Quit();
+            }
         }
     }
 }

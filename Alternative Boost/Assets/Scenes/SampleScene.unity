@@ -1524,7 +1524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9bac521387920342b820cea10c35205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   onGround: 0
   onWall: 0
   wallIsRight: 0
