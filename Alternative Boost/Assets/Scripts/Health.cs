@@ -48,8 +48,8 @@ public class Health : MonoBehaviour
             // destroys obstacle
             Destroy(objectHit.gameObject);
 
-            // game over if out of health or below certain y
-            if (health == 0 || gameObject.GetComponent<Rigidbody>().transform.position.y <= -3)
+            // game over if out of health
+            if (health == 0)
             {
                 SceneManager.LoadScene(2);
             }
