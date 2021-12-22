@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
+    // number of scene to load
+    [SerializeField]
+    public int sceneInt;
+
     // goes to testing level
     public void ToLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(sceneInt);
     }
 }

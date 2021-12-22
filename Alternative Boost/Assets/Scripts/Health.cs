@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -47,11 +48,10 @@ public class Health : MonoBehaviour
             // destroys obstacle
             Destroy(objectHit.gameObject);
 
-            // destroy player + close app. if out of health
-            if (health == 0)
+            // game over if out of health or below certain y
+            if (health == 0 || gameObject.GetComponent<Rigidbody>().transform.position.y <= -3)
             {
-                Destroy(gameObject);
-                Application.Quit();
+                SceneManager.LoadScene(2);
             }
         }
     }
