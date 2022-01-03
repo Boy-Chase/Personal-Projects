@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour
 {
@@ -25,7 +26,10 @@ public class Goal : MonoBehaviour
         // if player makes, contact with this object, set won to true
         if (objectHit.gameObject.GetComponent<PlayerMovement>() != null)
         {
+            // MAYBE NOT USED
             won = true;
+
+            SceneManager.LoadScene(3);
         }
     }
 }

@@ -24,6 +24,7 @@ public class healthUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // MAYBE NOT USED
         // if goal reached, print that to UI
         if (goal.GetComponent<Goal>().won)
         {
