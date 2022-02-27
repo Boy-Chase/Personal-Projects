@@ -8,9 +8,6 @@ public class healthUI : MonoBehaviour
     // the object we're getting health
     public GameObject player;
 
-    // the level's goal
-    public GameObject goal;
-
     // text to represent info above
     public Text healthText;
 
@@ -24,16 +21,7 @@ public class healthUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // MAYBE NOT USED
-        // if goal reached, print that to UI
-        if (goal.GetComponent<Goal>().won)
-        {
-            healthText.text = "WON !!";
-        }
-        else
-        {
-            // updates texts to be current
-            healthText.text = player.GetComponentInChildren<Health>().health.ToString();
-        }
+        // updates texts to be current
+        healthText.text = player.GetComponentInChildren<Health>().health.ToString();
     }
 }

@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             boostGo = true;
         }
+
         // button boost movement
         if (boostGo)
         {
