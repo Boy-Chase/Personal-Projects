@@ -28,6 +28,8 @@ public class charCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // INPUT
+
         // key a (left dodge)
         if (playerInput.x < 0)
         {
@@ -57,6 +59,18 @@ public class charCon : MonoBehaviour
         {
             manuever = 0;
         }
+
+        // ACTION
+
+
+        // RESET
+        manuever = 0;
+    }
+
+    
+    public void action(int maneuverInt)
+    {
+
     }
 
     // updates the input vector
