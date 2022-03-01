@@ -19,6 +19,9 @@ public class charCon : MonoBehaviour
     // amount of attack meter
     public int meter = 0;
 
+    // timer for commitment to manuever
+    public float timer = 0.0f;
+
     // stores input as a 2D vector
     private Vector2 playerInput;
 
@@ -31,6 +34,18 @@ public class charCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // TIMER
+
+        // if timer is under a second
+        if (timer < 1.0f)
+        {
+            // nullify input bc still in commitment
+            playerInput = new Vector2(0.0f, 0.0f);
+            
+            // add to timer
+            timer += Time.deltaTime;
+        }
+
         // INPUT TO ACTION:
 
         // key a (left dodge)
@@ -61,20 +76,21 @@ public class charCon : MonoBehaviour
             gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.2f);
         }
 
-        // otherwise nothing (neutral)
-        else
+        // if pose changes, start timer to begin commit 
+        if (manuever != lastManuever)
+        {
+            timer = 0.0f;
+        }
+
+        // no input (neutral)
+        if (1.0f <= timer)
         {
             manuever = 0;
+            gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
         }
 
         // set for next frame comparison
         lastManuever = manuever;
-    }
-
-    
-    public void action(int maneuverInt)
-    {
-
     }
 
     // updates the input vector
