@@ -13,7 +13,6 @@ public class enemyAI : MonoBehaviour
 
     // the previous input (used to check for change)
     public int lastManuever = 0;
-     
 
     // timer for commitment to manuever
     public float timer = 0.0f;
@@ -28,7 +27,7 @@ public class enemyAI : MonoBehaviour
     public float actionChance;
 
     // has three second action been rolled
-    bool threeSecAttempt = false;
+    public bool threeSecAttempt = false;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +40,6 @@ public class enemyAI : MonoBehaviour
     {
         // add to timer if it hasn't been three seconds 
         threeSec += Time.deltaTime;
-        
 
         // maybe do something
         if (3.0f <= threeSec && !threeSecAttempt)
@@ -64,7 +62,7 @@ public class enemyAI : MonoBehaviour
                 // attack left
                 if (actionChance < 0.50f)
                 {
-                    manuever = 2;
+                    manuever = 1;
                     gameObject.transform.position = new Vector3(-0.35f, 1.0f, 1.0f);
                 }
 
@@ -78,41 +76,44 @@ public class enemyAI : MonoBehaviour
                 // attack sweep
                 else
                 {
-                    manuever = 2;
+                    manuever = 3;
                     gameObject.transform.position = new Vector3(0.0f, 0.8f, 0.7f);
                 }
             }
+        }
 
-            // should we ever get to five seconds, definetly do an action
-            if (5.0f < threeSec)
+        // should we ever get to five seconds, definetly do an action
+        if (5.0f <= threeSec)
+        {
+            // reset action cooldown
+            threeSec = 0.0f;
+
+            // we can try to do something in three seconds
+            threeSecAttempt = false;
+
+            // attack left
+            if (actionChance < 0.35f)
             {
-                // reset action cooldown
-                threeSec = 0.0f;
-
-                // we can try to do something in three seconds
-                threeSecAttempt = false;
-
-                // attack left
-                if (actionChance < 0.35f)
-                {
-                    manuever = 2;
-                    gameObject.transform.position = new Vector3(-0.35f, 1.0f, 1.0f);
-                }
-
-                // attack right
-                else if (0.36f < actionChance && actionChance < 0.70f)
-                {
-                    manuever = 2;
-                    gameObject.transform.position = new Vector3(0.35f, 1.0f, 1.0f);
-                }
-
-                // attack sweep
-                else
-                {
-                    manuever = 2;
-                    gameObject.transform.position = new Vector3(0.0f, 1.0f, 0.7f);
-                }
+                manuever = 2;
+                gameObject.transform.position = new Vector3(-0.35f, 1.0f, 1.0f);
             }
+
+            // attack right
+            else if (0.36f < actionChance && actionChance < 0.70f)
+            {
+                manuever = 2;
+                gameObject.transform.position = new Vector3(0.35f, 1.0f, 1.0f);
+            }
+
+            // attack sweep
+            else
+            {
+                manuever = 2;
+                gameObject.transform.position = new Vector3(0.0f, 1.0f, 0.7f);
+            }
+
+            // set for next frame comparison
+            lastManuever = manuever;
         }
 
         /*
