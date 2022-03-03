@@ -76,7 +76,7 @@ public class enemyAI : MonoBehaviour
                 if (actionChance < 0.50f)
                 {
                     manuever = 1;
-                    gameObject.transform.position = new Vector3(-0.35f, 1.0f, 1.0f);
+                    gameObject.transform.position = new Vector3(-0.45f, 1.0f, 1.0f);
                     oneSec = 0.0f;
                 }
 
@@ -84,7 +84,7 @@ public class enemyAI : MonoBehaviour
                 else if (0.51f < actionChance && actionChance < 0.80f)
                 {
                     manuever = 2;
-                    gameObject.transform.position = new Vector3(0.35f, 1.0f, 1.0f);
+                    gameObject.transform.position = new Vector3(0.45f, 1.0f, 1.0f);
                     oneSec = 0.0f;
                 }
 
