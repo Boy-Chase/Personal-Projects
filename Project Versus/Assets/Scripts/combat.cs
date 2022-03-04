@@ -15,7 +15,7 @@ public class combat : MonoBehaviour
     public int vHealth = 5;
 
     // meter status
-    int meter = 0;
+    public int meter = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,7 @@ public class combat : MonoBehaviour
             hHealth--;
         }
         // sucessful left dodge
+        else if (vM == 1 && hM == 2) 
         {
             meter++;
         }
@@ -46,13 +47,13 @@ public class combat : MonoBehaviour
             hHealth--;
         }
         // successful right dodge
-        else
+        else if (vM == 2 && hM == 1)
         {
             meter++;
         }
 
         // protag attack attempt
-        if (100 < meter)
+        if (hM == 4 && 100 < meter)
         {
             meter -= 100;
             vHealth--;
