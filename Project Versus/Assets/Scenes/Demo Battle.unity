@@ -227,7 +227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero: {fileID: 1969975102}
+  hM: 0
+  hHealth: 10000
   villain: {fileID: 1275562403}
+  vM: 0
+  vHealth: 10000
 --- !u!4 &294885947
 Transform:
   m_ObjectHideFlags: 0

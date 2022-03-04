@@ -7,12 +7,12 @@ public class combat : MonoBehaviour
     // player + state + health
     public GameObject hero;
     public int hM;
-    private int hHealth = 10;
+    public int hHealth = 10000;
 
     // enemy + state + health
     public GameObject villain;
     public int vM;
-    private int vHealth = 10;
+    public int vHealth = 5;
 
     // meter status
     int meter = 0;
@@ -29,5 +29,33 @@ public class combat : MonoBehaviour
         // checking current states        
         hM = hero.GetComponent<charCon>().manuever;
         vM = villain.GetComponent<enemyAI>().manuever;
+
+        // enemy left attack damage
+        if(vM == 1 && hM != 2)
+        {
+            hHealth--;
+        }
+        // sucessful left dodge
+        {
+            meter++;
+        }
+
+        // enemy right attack damage
+        if (vM == 2 && hM != 1)
+        {
+            hHealth--;
+        }
+        // successful right dodge
+        else
+        {
+            meter++;
+        }
+
+        // protag attack attempt
+        if (100 < meter)
+        {
+            meter -= 100;
+            vHealth--;
+        }
     }
 }
