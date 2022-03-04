@@ -231,7 +231,8 @@ MonoBehaviour:
   hHealth: 10000
   villain: {fileID: 1275562403}
   vM: 0
-  vHealth: 10000
+  vHealth: 10
+  meter: 0
 --- !u!4 &294885947
 Transform:
   m_ObjectHideFlags: 0

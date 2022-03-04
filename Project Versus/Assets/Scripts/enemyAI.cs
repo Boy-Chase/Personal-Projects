@@ -9,6 +9,8 @@ public class enemyAI : MonoBehaviour
     // 1 = left attack
     // 2 = right attack
     // 3 = sweep attack
+    // 4 = left anticipate
+    // 5 = right anticipate
     public int manuever = 0;
 
     // the previous input (used to check for change)
@@ -25,6 +27,15 @@ public class enemyAI : MonoBehaviour
 
     // one sec commitment lock
     public float oneSec = 0.0f;
+
+
+    // anticipation lock
+    public float antSec = 0.0f;
+    public bool t = false;
+
+
+    // what threesec was frame before
+    public float previousSec;
 
     // odds of enemy moving
     public float actionChance;
@@ -53,6 +64,9 @@ public class enemyAI : MonoBehaviour
         threeSec += Time.deltaTime;
 
         oneSec += Time.deltaTime;
+ 
+            antSec += Time.deltaTime;
+   
 
         // maybe do something
         if (3.0f <= threeSec && !threeSecAttempt)
@@ -76,7 +90,7 @@ public class enemyAI : MonoBehaviour
                 if (actionChance < 0.50f)
                 {
                     manuever = 1;
-                    gameObject.transform.position = new Vector3(-0.45f, 1.0f, 1.0f);
+                    gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
                     oneSec = 0.0f;
                 }
 
@@ -84,7 +98,7 @@ public class enemyAI : MonoBehaviour
                 else if (0.51f < actionChance && actionChance < 0.80f)
                 {
                     manuever = 2;
-                    gameObject.transform.position = new Vector3(0.45f, 1.0f, 1.0f);
+                    gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
                     oneSec = 0.0f;
                 }
 
@@ -110,8 +124,8 @@ public class enemyAI : MonoBehaviour
             // attack left
             if (actionChance < 0.35f)
             {
-                manuever = 2;
-                gameObject.transform.position = new Vector3(-0.35f, 1.0f, 1.0f);
+                manuever = 1;
+                gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
                 oneSec = 0.0f;
             }
 
@@ -119,20 +133,48 @@ public class enemyAI : MonoBehaviour
             else if (0.36f < actionChance && actionChance < 0.70f)
             {
                 manuever = 2;
-                gameObject.transform.position = new Vector3(0.35f, 1.0f, 1.0f);
+                gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
                 oneSec = 0.0f;
             }
 
             // attack sweep
             else
             {
-                manuever = 2;
+                manuever = 3;
                 gameObject.transform.position = new Vector3(0.0f, 1.0f, 0.7f);
                 oneSec = 0.0f;
             }
         }
 
-        // set for next frame comparison
-        lastManuever = manuever;
+        // only triggers ON reset ONCE
+        if (threeSec < previousSec)
+        {
+            // start it
+            antSec = 0;
+        }
+
+        if (antSec < 0.8f && manuever == 1)
+        {
+            t = true;
+            gameObject.transform.position = new Vector3(-0.25f, 1.0f, 1.0f);
+        }
+        else if (0.8f < antSec && manuever == 1)
+        {
+            gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
+        }
+
+
+        if (antSec < 0.8f && manuever == 2)
+        {
+            t = true;
+            gameObject.transform.position = new Vector3(0.25f, 1.0f, 1.0f);
+        }
+        else if (0.8f < antSec && manuever == 2)
+        {
+            gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
+        }
+
+        // update what time was
+        previousSec = threeSec;
     }
 }
