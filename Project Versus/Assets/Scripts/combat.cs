@@ -15,6 +15,7 @@ public class combat : MonoBehaviour
     public int vM;
     public float vTimer;
     public int vHealth = 5;
+    public float antT;
 
     // meter status
     public int meter = 0;
@@ -22,7 +23,8 @@ public class combat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // number doesn't change
+        antT = villain.GetComponent<enemyAI>().antFrames;
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class combat : MonoBehaviour
         vTimer = villain.GetComponent<enemyAI>().threeSec;
 
         // enemy left attack damage
-        if (vM == 1 && hM != 2)
+        if (vM == 1 && hM != 2 && antT < vTimer)
         {
             hHealth--;
         }
@@ -48,12 +50,23 @@ public class combat : MonoBehaviour
         }
 
         // enemy right attack damage
-        if (vM == 2 && hM != 1)
+        if (vM == 2 && hM != 1 && antT < vTimer)
         {
             hHealth--;
         }
         // successful right dodge
         else if (vM == 2 && hM == 1)
+        {
+            meter++;
+        }
+
+        // enemy sweep attack damage
+        if (vM == 3 && hM != 3 && antT < vTimer)
+        {
+            hHealth--;
+        }
+        // sucessful left dodge
+        else if (vM == 3 && hM == 3)
         {
             meter++;
         }

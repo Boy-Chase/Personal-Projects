@@ -35,6 +35,9 @@ public class enemyAI : MonoBehaviour
     // has three second action been rolled
     public bool threeSecAttempt = false;
 
+    // how long anticipation is
+    public float antFrames = 0.6f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -146,23 +149,33 @@ public class enemyAI : MonoBehaviour
         }
 
         // anticipation left
-        if (antSec < 0.8f && manuever == 1)
+        if (antSec < antFrames && manuever == 1)
         {
             gameObject.transform.position = new Vector3(-0.25f, 1.0f, 1.0f);
         }
-        else if (0.8f < antSec && manuever == 1)
+        else if (antFrames < antSec && manuever == 1)
         {
             gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
         }
 
         // anticipation right
-        if (antSec < 0.8f && manuever == 2)
+        if (antSec < antFrames && manuever == 2)
         {
             gameObject.transform.position = new Vector3(0.25f, 1.0f, 1.0f);
         }
-        else if (0.8f < antSec && manuever == 2)
+        else if (antFrames < antSec && manuever == 2)
         {
             gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
+        }
+
+        // anticipation sweep
+        if (antSec < antFrames && manuever == 3)
+        {
+            gameObject.transform.position = new Vector3(0.0f, 0.8f, 0.85f);
+        }
+        else if (antFrames < antSec && manuever == 3)
+        {
+            gameObject.transform.position = new Vector3(0.0f, 0.65f, 0.6f);
         }
 
         // update what time was
