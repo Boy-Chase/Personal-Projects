@@ -9,15 +9,10 @@ public class enemyAI : MonoBehaviour
     // 1 = left attack
     // 2 = right attack
     // 3 = sweep attack
-    // 4 = left anticipate
-    // 5 = right anticipate
     public int manuever = 0;
 
     // the previous input (used to check for change)
     public int lastManuever = 0;
-
-    // timer for commitment to manuever
-    public float timer = 0.0f;
 
     // stores input as a 2D vector
     private Vector2 playerInput;
@@ -28,12 +23,9 @@ public class enemyAI : MonoBehaviour
     // one sec commitment lock
     public float oneSec = 0.0f;
 
-
     // anticipation lock
     public float antSec = 0.0f;
-    public bool t = false;
-
-
+    
     // what threesec was frame before
     public float previousSec;
 
@@ -60,12 +52,12 @@ public class enemyAI : MonoBehaviour
             oneSec = 0.0f;
         }
 
-        // add to timer if it hasn't been three seconds 
+        // add to timers
         threeSec += Time.deltaTime;
 
         oneSec += Time.deltaTime;
  
-            antSec += Time.deltaTime;
+        antSec += Time.deltaTime;
    
 
         // maybe do something
@@ -153,9 +145,9 @@ public class enemyAI : MonoBehaviour
             antSec = 0;
         }
 
+        // anticipation left
         if (antSec < 0.8f && manuever == 1)
         {
-            t = true;
             gameObject.transform.position = new Vector3(-0.25f, 1.0f, 1.0f);
         }
         else if (0.8f < antSec && manuever == 1)
@@ -163,10 +155,9 @@ public class enemyAI : MonoBehaviour
             gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
         }
 
-
+        // anticipation right
         if (antSec < 0.8f && manuever == 2)
         {
-            t = true;
             gameObject.transform.position = new Vector3(0.25f, 1.0f, 1.0f);
         }
         else if (0.8f < antSec && manuever == 2)

@@ -7,11 +7,13 @@ public class combat : MonoBehaviour
     // player + state + health
     public GameObject hero;
     public int hM;
+    public float hTimer;
     public int hHealth = 10000;
 
     // enemy + state + health
     public GameObject villain;
     public int vM;
+    public float vTimer;
     public int vHealth = 5;
 
     // meter status
@@ -30,8 +32,12 @@ public class combat : MonoBehaviour
         hM = hero.GetComponent<charCon>().manuever;
         vM = villain.GetComponent<enemyAI>().manuever;
 
+        // checking timers
+        hTimer = hero.GetComponent<charCon>().timer;
+        vTimer = villain.GetComponent<enemyAI>().threeSec;
+
         // enemy left attack damage
-        if(vM == 1 && hM != 2)
+        if (vM == 1 && hM != 2)
         {
             hHealth--;
         }
