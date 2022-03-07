@@ -46,6 +46,8 @@ public class charCon : MonoBehaviour
             timer += Time.deltaTime;
         }
 
+        // APPLY MATERIAL
+
         // INPUT TO ACTION:
 
         // key a (left dodge)
