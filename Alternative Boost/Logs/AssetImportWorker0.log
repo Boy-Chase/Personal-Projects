@@ -143,3 +143,4 @@ Received Import Request.
 Start importing Assets/Scripts/Health.cs using Guid(a9bac521387920342b820cea10c35205) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23e157b225f0b6f6d9d925aed3476084') in 0.141774 seconds 
   Import took 0.146166 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
