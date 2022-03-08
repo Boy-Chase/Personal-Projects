@@ -13,6 +13,12 @@ public class charCon : MonoBehaviour
     // 4 = attack (does nothing if meter too low)
     public int manuever = 0;
 
+    // the materials to represent each manuever
+    public Material neutral;
+    public Material left;
+    public Material right;
+    public Material attack;
+
     // the previous input (used to check for change)
     public int lastManuever = 0;
 
@@ -47,6 +53,26 @@ public class charCon : MonoBehaviour
         }
 
         // APPLY MATERIAL
+        if (manuever == 0)
+        {
+            
+        }
+        else if (manuever == 1)
+        {
+
+        }
+        else if (manuever == 2)
+        {
+
+        }
+        else if (manuever == 3)
+        {
+            // this ones a temp
+        }
+        else if (manuever == 4)
+        {
+
+        }
 
         // INPUT TO ACTION:
 
