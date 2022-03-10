@@ -17,6 +17,7 @@ public class charCon : MonoBehaviour
     public Material neutral;
     public Material left;
     public Material right;
+    public Material back;
     public Material attack;
 
     // the previous input (used to check for change)
@@ -55,23 +56,24 @@ public class charCon : MonoBehaviour
         // APPLY MATERIAL
         if (manuever == 0)
         {
-            
+            gameObject.GetComponent<Renderer>().material = neutral; 
         }
         else if (manuever == 1)
         {
-
+            gameObject.GetComponent<Renderer>().material = left;
         }
         else if (manuever == 2)
         {
-
+            gameObject.GetComponent<Renderer>().material = right;
         }
         else if (manuever == 3)
         {
-            // this ones a temp
+            // this ones a temp CHANGE THE MATS ALBEDO
+            gameObject.GetComponent<Renderer>().material = back;
         }
         else if (manuever == 4)
         {
-
+            gameObject.GetComponent<Renderer>().material = attack;
         }
 
         // INPUT TO ACTION:
