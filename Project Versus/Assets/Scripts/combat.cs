@@ -8,14 +8,20 @@ public class combat : MonoBehaviour
     public GameObject hero;
     public int hM;
     public float hTimer;
-    public int hHealth = 10000;
+    public int hHealth = 5;
+
+    // NEW
+    public bool hurt = false;
 
     // enemy + state + health
     public GameObject villain;
     public int vM;
     public float vTimer;
-    public int vHealth = 5;
+    public int vHealth = 15;
     public float antT;
+
+    // NEW
+    public int lastvM;
 
     // meter status
     public int meter = 0;
@@ -38,10 +44,19 @@ public class combat : MonoBehaviour
         hTimer = hero.GetComponent<charCon>().timer;
         vTimer = villain.GetComponent<enemyAI>().threeSec;
 
+        // NEW
+        // villain returns to neutral
+        if ( (lastvM == 1 || lastvM == 2 || lastvM == 3) && vM == 0 && hurt)
+        {
+            // if hurt, apply and reset
+            hHealth--;
+            hurt = false;
+        }
+
         // enemy left attack damage
         if (vM == 1 && hM != 2 && antT < vTimer)
         {
-            hHealth--;
+            hurt = true;
         }
         // sucessful left dodge
         else if (vM == 1 && hM == 2) 
@@ -52,7 +67,7 @@ public class combat : MonoBehaviour
         // enemy right attack damage
         if (vM == 2 && hM != 1 && antT < vTimer)
         {
-            hHealth--;
+            hurt = true;
         }
         // successful right dodge
         else if (vM == 2 && hM == 1)
@@ -63,7 +78,7 @@ public class combat : MonoBehaviour
         // enemy sweep attack damage
         if (vM == 3 && hM != 3 && antT < vTimer)
         {
-            hHealth--;
+            hurt = true;
         }
         // sucessful left dodge
         else if (vM == 3 && hM == 3)
@@ -77,5 +92,8 @@ public class combat : MonoBehaviour
             meter -= 100;
             vHealth--;
         }
+
+        // set villain's last manuever
+        lastvM = vM;
     }
 }

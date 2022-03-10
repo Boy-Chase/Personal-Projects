@@ -96,7 +96,7 @@ public class charCon : MonoBehaviour
         else if (playerInput.y < 0)
         {
             manuever = 3;
-            gameObject.transform.position = new Vector3(0.00f, -0.15f , -0.30f);
+            gameObject.transform.position = new Vector3(0.00f, -0.15f, -0.30f);
         }
 
         // key space (attack)
