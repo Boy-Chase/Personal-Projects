@@ -32,6 +32,9 @@ public class charCon : MonoBehaviour
     // stores input as a 2D vector
     private Vector2 playerInput;
 
+    // combat manager for meter reference
+    public GameObject combatManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -102,8 +105,11 @@ public class charCon : MonoBehaviour
         // key space (attack)
         else if (0 < playerInput.y)
         {
-            manuever = 4;
-            gameObject.transform.position = new Vector3(0.00f, 0.00f, 0.25f);
+            if (250 < combatManager.GetComponent<combat>().meter)
+            {
+                manuever = 4;
+                gameObject.transform.position = new Vector3(0.00f, 0.00f, 0.25f);
+            }
         }
 
         // if pose changes, start timer to begin commit 

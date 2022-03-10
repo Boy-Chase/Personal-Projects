@@ -324,13 +324,15 @@ MonoBehaviour:
   hM: 0
   hTimer: 0
   hHealth: 5
-  hurt: 0
+  lasthM: 0
+  attack: 0
   villain: {fileID: 1275562403}
   vM: 0
   vTimer: 0
   vHealth: 15
   antT: 0
   lastvM: 0
+  hurt: 0
   meter: 0
 --- !u!4 &294885947
 Transform:
@@ -1084,6 +1086,10 @@ PrefabInstance:
       propertyPath: neutral
       value: 
       objectReference: {fileID: 2100000, guid: 56e15c4eb9e60b440a17a6447e3c5825, type: 2}
+    - target: {fileID: 3418836531801624004, guid: 2f4053f8008fc6d459823edec485812a, type: 3}
+      propertyPath: combatManager
+      value: 
+      objectReference: {fileID: 294885945}
     - target: {fileID: 3418836531801624014, guid: 2f4053f8008fc6d459823edec485812a, type: 3}
       propertyPath: m_Name
       value: Player

@@ -11,7 +11,10 @@ public class combat : MonoBehaviour
     public int hHealth = 5;
 
     // NEW
-    public bool hurt = false;
+    public int lasthM;
+
+    // NEW
+    public bool attack = false;
 
     // enemy + state + health
     public GameObject villain;
@@ -22,6 +25,9 @@ public class combat : MonoBehaviour
 
     // NEW
     public int lastvM;
+
+    // NEW
+    public bool hurt = false;
 
     // meter status
     public int meter = 0;
@@ -51,6 +57,15 @@ public class combat : MonoBehaviour
             // if hurt, apply and reset
             hHealth--;
             hurt = false;
+        }
+
+        // villain returns to neutral
+        if (lasthM == 4 && hM == 0 && attack)
+        {
+            // if hurt, apply and reset
+            vHealth--;
+            meter -= 250;
+            attack = false;
         }
 
         // enemy left attack damage
@@ -87,11 +102,13 @@ public class combat : MonoBehaviour
         }
 
         // protag attack attempt
-        if (hM == 4 && 100 < meter)
+        if (hM == 4 && 250 < meter)
         {
-            meter -= 100;
-            vHealth--;
+            attack = true;
         }
+
+        // set hero's last manuever
+        lasthM = hM;
 
         // set villain's last manuever
         lastvM = vM;
