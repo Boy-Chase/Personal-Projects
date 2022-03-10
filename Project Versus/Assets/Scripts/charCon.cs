@@ -82,21 +82,21 @@ public class charCon : MonoBehaviour
         if (playerInput.x < 0)
         {
             manuever = 1;
-            gameObject.transform.position = new Vector3(-0.80f, 0.00f, 0.30f);
+            gameObject.transform.position = new Vector3(-0.80f, -0.11f, 0.30f);
         }
 
         // key d (right dodge)
         else if (0 < playerInput.x)
         {
             manuever = 2;
-            gameObject.transform.position = new Vector3(0.80f, 0.00f, 0.25f);
+            gameObject.transform.position = new Vector3(0.80f, -0.11f, 0.25f);
         }
 
         // key s (back step)
         else if (playerInput.y < 0)
         {
             manuever = 3;
-            gameObject.transform.position = new Vector3(0.00f, -0.15f, -0.30f);
+            gameObject.transform.position = new Vector3(0.00f, -0.2f, -0.30f);
         }
 
         // key space (attack)
@@ -116,7 +116,7 @@ public class charCon : MonoBehaviour
         if (1.0f <= timer)
         {
             manuever = 0;
-            gameObject.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+            gameObject.transform.position = new Vector3(0.0f, -0.11f, 0.0f);
         }
 
         // set for next frame comparison

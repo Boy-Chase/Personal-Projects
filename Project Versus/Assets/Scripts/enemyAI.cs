@@ -51,7 +51,7 @@ public class enemyAI : MonoBehaviour
         if (1.0f < oneSec)
         {
             manuever = 0;
-            gameObject.transform.position = new Vector3(0.0f, 1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(0.0f, 1.31f, 1.0f);
             oneSec = 0.0f;
         }
 
@@ -85,7 +85,7 @@ public class enemyAI : MonoBehaviour
                 if (actionChance < 0.50f)
                 {
                     manuever = 1;
-                    gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
+                    gameObject.transform.position = new Vector3(-0.85f, 1.31f, 1.0f);
                     oneSec = 0.0f;
                 }
 
@@ -93,7 +93,7 @@ public class enemyAI : MonoBehaviour
                 else if (0.51f < actionChance && actionChance < 0.80f)
                 {
                     manuever = 2;
-                    gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
+                    gameObject.transform.position = new Vector3(0.85f, 1.31f, 1.0f);
                     oneSec = 0.0f;
                 }
 
@@ -120,7 +120,7 @@ public class enemyAI : MonoBehaviour
             if (actionChance < 0.35f)
             {
                 manuever = 1;
-                gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
+                gameObject.transform.position = new Vector3(-0.85f, 1.31f, 1.0f);
                 oneSec = 0.0f;
             }
 
@@ -128,7 +128,7 @@ public class enemyAI : MonoBehaviour
             else if (0.36f < actionChance && actionChance < 0.70f)
             {
                 manuever = 2;
-                gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
+                gameObject.transform.position = new Vector3(0.85f, 1.31f, 1.0f);
                 oneSec = 0.0f;
             }
 
@@ -136,7 +136,7 @@ public class enemyAI : MonoBehaviour
             else
             {
                 manuever = 3;
-                gameObject.transform.position = new Vector3(0.0f, 1.0f, 0.7f);
+                gameObject.transform.position = new Vector3(0.0f, 0.8f, 0.7f);
                 oneSec = 0.0f;
             }
         }
@@ -151,31 +151,31 @@ public class enemyAI : MonoBehaviour
         // anticipation left
         if (antSec < antFrames && manuever == 1)
         {
-            gameObject.transform.position = new Vector3(-0.25f, 1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(-0.25f, 1.31f, 1.0f);
         }
         else if (antFrames < antSec && manuever == 1)
         {
-            gameObject.transform.position = new Vector3(-0.85f, 1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(-0.85f, 1.31f, 1.0f);
         }
 
         // anticipation right
         if (antSec < antFrames && manuever == 2)
         {
-            gameObject.transform.position = new Vector3(0.25f, 1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(0.25f, 1.31f, 1.0f);
         }
         else if (antFrames < antSec && manuever == 2)
         {
-            gameObject.transform.position = new Vector3(0.85f, 1.0f, 1.0f);
+            gameObject.transform.position = new Vector3(0.85f, 1.31f, 1.0f);
         }
 
         // anticipation sweep
         if (antSec < antFrames && manuever == 3)
         {
-            gameObject.transform.position = new Vector3(0.0f, 0.8f, 0.85f);
+            gameObject.transform.position = new Vector3(0.0f, 1.0f, 0.85f);
         }
         else if (antFrames < antSec && manuever == 3)
         {
-            gameObject.transform.position = new Vector3(0.0f, 0.65f, 0.6f);
+            gameObject.transform.position = new Vector3(0.0f, 0.8f, 0.6f);
         }
 
         // update what time was
