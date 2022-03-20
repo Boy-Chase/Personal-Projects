@@ -10,10 +10,10 @@ public class combat : MonoBehaviour
     public float hTimer;
     public int hHealth = 5;
 
-    // NEW
+    // what player did last frame
     public int lasthM;
 
-    // NEW
+    // attack is able to happen and committed to
     public bool attack = false;
 
     // enemy + state + health
@@ -23,10 +23,10 @@ public class combat : MonoBehaviour
     public int vHealth = 15;
     public float antT;
 
-    // NEW
+    // what villian did last frame
     public int lastvM;
 
-    // NEW
+    // damage will be inflicted
     public bool hurt = false;
 
     // meter status
@@ -50,7 +50,6 @@ public class combat : MonoBehaviour
         hTimer = hero.GetComponent<charCon>().timer;
         vTimer = villain.GetComponent<enemyAI>().threeSec;
 
-        // NEW
         // villain returns to neutral
         if ( (lastvM == 1 || lastvM == 2 || lastvM == 3) && vM == 0 && hurt)
         {
