@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class combat : MonoBehaviour
 {
-    // player + state + health
+    // player + state + health + combat length 
     public GameObject hero;
     public int hM;
     public float hTimer;
@@ -20,7 +20,7 @@ public class combat : MonoBehaviour
     public GameObject villain;
     public int vM;
     public float vTimer;
-    public int vHealth = 15;
+    public int vHealth = 3;
     public float antT;
 
     // what villian did last frame
@@ -65,6 +65,14 @@ public class combat : MonoBehaviour
             vHealth--;
             meter -= 250;
             attack = false;
+
+            // dead if no health
+            if (vHealth < 1)
+            {
+                villain.GetComponent<enemyAI>().timeToDie = true;
+
+                vHealth = 3;
+            }
         }
 
         // enemy left attack damage
