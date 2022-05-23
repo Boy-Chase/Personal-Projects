@@ -48,7 +48,7 @@ public class combat : MonoBehaviour
 
         // checking timers
         hTimer = hero.GetComponent<charCon>().timer;
-        vTimer = villain.GetComponent<enemyAI>().threeSec;
+        vTimer = villain.GetComponent<enemyAI>().timer;
 
         // villain returns to neutral
         if ( (lastvM == 1 || lastvM == 2 || lastvM == 3) && vM == 0 && hurt)
