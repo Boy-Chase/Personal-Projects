@@ -18,7 +18,7 @@ public class enemyAI : MonoBehaviour
     private Vector2 playerInput;
 
     // every 3 seconds
-    public float threeSec = 0.0f;
+    public float timer = 0.0f;
 
     // one sec commitment lock
     public float oneSec = 0.0f;
@@ -50,7 +50,8 @@ public class enemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        firstM = Random.Range(1, 3);
+        definiteM = Random.Range(4, 6);
     }
 
     // Update is called once per frame
@@ -65,7 +66,7 @@ public class enemyAI : MonoBehaviour
         }
 
         // add to timers
-        threeSec += Time.deltaTime;
+        timer += Time.deltaTime;
 
         oneSec += Time.deltaTime;
  
@@ -73,7 +74,7 @@ public class enemyAI : MonoBehaviour
    
 
         // maybe do something
-        if (3.0f <= threeSec && !threeSecAttempt)
+        if (firstM <= timer && !threeSecAttempt)
         {
             // tried three sec attempt
             threeSecAttempt = true;
@@ -85,7 +86,7 @@ public class enemyAI : MonoBehaviour
             if (0.20f < actionChance)
             {
                 // reset action cooldown
-                threeSec = 0.0f;
+                timer = 0.0f;
 
                 // we can try to do something in three seconds
                 threeSecAttempt = false;
@@ -117,10 +118,10 @@ public class enemyAI : MonoBehaviour
         }
 
         // should we ever get to five seconds, definetly do an action
-        if (5.0f <= threeSec)
+        if (definiteM <= timer)
         {
             // reset action cooldown
-            threeSec = 0.0f;
+            timer = 0.0f;
 
             // we can try to do something in three seconds
             threeSecAttempt = false;
@@ -151,7 +152,7 @@ public class enemyAI : MonoBehaviour
         }
 
         // only triggers ON reset ONCE
-        if (threeSec < previousSec)
+        if (timer < previousSec)
         {
             // start it
             antSec = 0;
@@ -190,11 +191,11 @@ public class enemyAI : MonoBehaviour
         if (timeToDie)
         {
             gameObject.transform.position = new Vector3(0.0f, -100.0f, 0.6f);
-            threeSec = 0.0f;
+            timer = 0.0f;
         }
 
         // update what time was
-        previousSec = threeSec;
+        previousSec = timer;
     }
 }
 
