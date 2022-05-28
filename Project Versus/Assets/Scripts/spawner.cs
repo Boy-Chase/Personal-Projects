@@ -42,6 +42,9 @@ public class spawner : MonoBehaviour
                 this.GetComponent<combat>().villain.transform.position = new Vector3(0.0f, 1.31f, 1.0f);
                 this.GetComponent<combat>().villain.transform.rotation = new Quaternion(0.0f, 180.0f, 0.0f, 0.0f);
 
+                // give player a health
+                this.GetComponent<combat>().hHealth++;
+
                 // on to next combat round
                 combatRound++;
             }

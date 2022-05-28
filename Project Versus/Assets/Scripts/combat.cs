@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class combat : MonoBehaviour
 {
@@ -119,5 +120,11 @@ public class combat : MonoBehaviour
 
         // set villain's last manuever
         lastvM = vM;
+
+        // player lost
+        if (hHealth < 1)
+        {
+            SceneManager.LoadScene("Game Over");
+        }
     }
 }

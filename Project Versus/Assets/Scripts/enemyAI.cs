@@ -50,7 +50,7 @@ public class enemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        firstM = Random.Range(1, 3);
+        firstM = Random.Range(2, 3);
         definiteM = Random.Range(4, 6);
     }
 
