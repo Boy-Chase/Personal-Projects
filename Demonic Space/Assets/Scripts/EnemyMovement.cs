@@ -6,6 +6,7 @@ using UnityEngine.Audio;
 public class EnemyMovement : MonoBehaviour
 {
     public GameObject Player;
+    public GameObject Camera;
 
     public float shootCooldown;
     public GameObject bullet;
@@ -22,15 +23,25 @@ public class EnemyMovement : MonoBehaviour
         // increment cooldown
         shootCooldown += Time.deltaTime;
 
-        // set Z to the Player's
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, Player.transform.position.z + 15);
+        // if a static class enemy, move like this
+        if (gameObject.tag == "static")
+        {
+            // set position based on camera
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, Camera.transform.position.z + 25);
+        }
+
+        // if a follower class enemy, move like this
+        if (gameObject.tag == "follower")
+        {
+            // set position based on camera
+            gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 25);
+        }
 
         // if cooldown is greater than sec, fire a bullet
         if (5.0f < shootCooldown)
         {
-            Instantiate(bullet);
+            Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
             bullet.GetComponent<Bullet>().playerMade = false;
-            bullet.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1);
             shootCooldown = 0.0f;
         }
     }

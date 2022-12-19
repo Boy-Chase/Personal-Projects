@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
         {
             pastPositionsXY.Add(new Vector2(0.0f, 0.0f));
         }
+
+        // all bullets in this script are made by the Player (not an enemy)
+        bullet.GetComponent<Bullet>().playerMade = true;
     }
 
     // Update is called once per frame
@@ -38,30 +41,30 @@ public class PlayerMovement : MonoBehaviour
         // key a (move left)
         if (playerInput.x < 0)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x - 3.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x - 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
         }
 
         // key d (move right)
         if (playerInput.x > 0)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 3.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x + 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
         }
 
         // key w (move up)
         if (playerInput.y > 0)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 3.0f * Time.deltaTime, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 4.0f * Time.deltaTime, gameObject.transform.position.z);
         }
 
         // key s (move down)
         if (playerInput.y < 0)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 3.0f * Time.deltaTime, gameObject.transform.position.z);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4.0f * Time.deltaTime, gameObject.transform.position.z);
         }
 
         // left click check
         if (Input.GetMouseButtonDown(0))
-        {
+        { 
             // make bullets
             Instantiate(bullet, new Vector3(gameObject.transform.position.x - 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
             Instantiate(bullet, new Vector3(gameObject.transform.position.x + 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));

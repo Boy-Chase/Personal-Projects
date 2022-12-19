@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour
         else
         {
             // move the bullet backward
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -gameObject.transform.position.z + 15.0f * Time.deltaTime);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 15.0f * Time.deltaTime);
         }
     }
 }
