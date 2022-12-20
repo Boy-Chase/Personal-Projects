@@ -5,7 +5,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
     // current position of the ship
     public Vector3 position;
@@ -35,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // all bullets in this script are made by the Player (not an enemy)
+        bullet.GetComponent<Bullet>().playerMade = true;
+
         // move the player forward
         gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 7.0f * Time.deltaTime);
 
@@ -85,5 +88,9 @@ public class PlayerMovement : MonoBehaviour
     public void OnAction(InputValue value)
     {
         playerInput = value.Get<Vector2>();
+    }
+    public void OnCollisionEnter(Collision collision)
+    {
+        
     }
 }

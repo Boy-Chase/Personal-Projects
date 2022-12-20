@@ -15,11 +15,17 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         shootCooldown = 0.0f;
+
+        // all bullets in this script are made by an enemy
+        bullet.GetComponent<Bullet>().playerMade = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        // all bullets in this script are made by an enemy
+        bullet.GetComponent<Bullet>().playerMade = false;
+
         // increment cooldown
         shootCooldown += Time.deltaTime;
 

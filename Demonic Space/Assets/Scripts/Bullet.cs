@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public bool playerMade = true;
+    public bool playerMade = false;
 
     // Update is called once per frame
     void Update()
