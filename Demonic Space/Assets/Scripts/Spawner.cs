@@ -10,6 +10,9 @@ public class Spawner : MonoBehaviour
     // what we're making
     public List<GameObject> type = new List<GameObject>();
 
+    // its tag
+    public List<String> tag = new List<String>();
+
     // where 
     public List<Vector3> position = new List<Vector3>();
 
@@ -38,7 +41,8 @@ public class Spawner : MonoBehaviour
                 index = playerZ.IndexOf(f);
 
                 // spawn the item
-                Instantiate(type[index], position[index], new Quaternion(gameObject.transform.rotation.x, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                GameObject g = Instantiate(type[index], position[index], new Quaternion(gameObject.transform.rotation.x, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                g.tag = tag[index];
             }
         }
 
@@ -46,6 +50,7 @@ public class Spawner : MonoBehaviour
         if(index != 1000)
         {
             type.RemoveAt(index);
+            tag.RemoveAt(index);
             position.RemoveAt(index);
             playerZ.RemoveAt(index);
         }
