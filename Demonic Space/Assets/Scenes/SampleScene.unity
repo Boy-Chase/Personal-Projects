@@ -940,15 +940,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252514805430848259, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.99631
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3252514805430848259, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.982841
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3252514805430848259, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 76.50854
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3252514805430848259, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1042,6 +1042,10 @@ PrefabInstance:
     - target: {fileID: 7636783071858456727, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: m_Name
       value: Ship
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636783071858456727, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
+      propertyPath: m_TagString
+      value: player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}

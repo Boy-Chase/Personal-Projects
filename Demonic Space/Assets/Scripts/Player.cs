@@ -7,11 +7,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    // health of the player
+    public int health;
+
     // current position of the ship
     public Vector3 position;
 
     // stores input as a 2D vector
-    private Vector2 playerInput;
+    public Vector2 playerInput;
 
     // bullet prefab
     public GameObject bullet;
@@ -20,8 +23,14 @@ public class Player : MonoBehaviour
     public Camera myCamera;
     private List<Vector2> pastPositionsXY = new List<Vector2>();
 
+    public float iFrames;
+
     void Start()
     {
+        // set health + invincibilty
+        health = 3;
+        iFrames = 3.0f;
+
         // default positions
         for (int x = 0; x < 100; x++)
         {
@@ -35,6 +44,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        iFrames -= Time.deltaTime;
+
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
 
@@ -89,8 +100,15 @@ public class Player : MonoBehaviour
     {
         playerInput = value.Get<Vector2>();
     }
-    public void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider other)
     {
-        
+        // if Player is touching card
+        if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "asteroid") && iFrames < 0)
+        {
+            health--;
+            iFrames = 3.0f;
+            Destroy(other.gameObject);
+        }
     }
 }

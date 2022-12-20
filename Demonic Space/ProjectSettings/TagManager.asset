@@ -6,6 +6,9 @@ TagManager:
   tags:
   - follower
   - static
+  - asteroid
+  - player
+  - bullet
   layers:
   - Default
   - TransparentFX

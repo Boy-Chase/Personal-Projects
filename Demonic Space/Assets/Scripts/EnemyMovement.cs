@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -11,10 +11,18 @@ public class EnemyMovement : MonoBehaviour
     public float shootCooldown;
     public GameObject bullet;
 
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
+        health = 5;
+
         shootCooldown = 0.0f;
+
+        // find our player + camera
+        Player = GameObject.FindGameObjectWithTag("player");
+        Camera = GameObject.FindGameObjectWithTag("MainCamera");
 
         // all bullets in this script are made by an enemy
         bullet.GetComponent<Bullet>().playerMade = false;
@@ -49,6 +57,21 @@ public class EnemyMovement : MonoBehaviour
             Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
             bullet.GetComponent<Bullet>().playerMade = false;
             shootCooldown = 0.0f;
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        // if Player is touching card
+        if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
+        {
+            health--;
+            Destroy(other.gameObject);
+        }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
