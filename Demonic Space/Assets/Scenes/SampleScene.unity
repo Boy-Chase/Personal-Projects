@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 103674174}
   - component: {fileID: 103674173}
   m_Layer: 0
-  m_Name: Testing Mac
+  m_Name: Black Space
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,12 +211,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103674172}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -38.3, z: 301}
-  m_LocalScale: {x: 1000, y: 1000, z: 1}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -150.50002, y: -51.066666, z: 0.9999695}
+  m_LocalScale: {x: 999.99976, y: 1333.3334, z: 0.49999988}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 610687444}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &610687439 stripped
 GameObject:
@@ -5312,7 +5312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7413609425496257700, guid: f7ceb3b6de1728a429d2ba7f77234a32, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7413609425496257700, guid: f7ceb3b6de1728a429d2ba7f77234a32, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5385,7 +5385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7413609425496257700, guid: f7ceb3b6de1728a429d2ba7f77234a32, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7413609425496257700, guid: f7ceb3b6de1728a429d2ba7f77234a32, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5620,7 +5620,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2910930367970618966, guid: 2330f905f62c2764eaa5adccfdc51faa, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2910930367970618966, guid: 2330f905f62c2764eaa5adccfdc51faa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5745,7 +5745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252514805430848259, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3252514805430848259, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: m_LocalPosition.x
