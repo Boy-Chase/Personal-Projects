@@ -58,25 +58,25 @@ public class Player : MonoBehaviour
         if (startLock < 0.0f)
         {
             // key a (move left)
-            if (playerInput.x < 0)
+            if (playerInput.x < 0 && -5.0f < gameObject.transform.position.x)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x - 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key d (move right)
-            if (playerInput.x > 0)
+            if (playerInput.x > 0 && gameObject.transform.position.x < 5.0f)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x + 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key w (move up)
-            if (playerInput.y > 0)
+            if (playerInput.y > 0 && gameObject.transform.position.y < 5.0f)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 4.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
             // key s (move down)
-            if (playerInput.y < 0)
+            if (playerInput.y < 0 && -5.0f < gameObject.transform.position.y)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4.0f * Time.deltaTime, gameObject.transform.position.z);
             }
