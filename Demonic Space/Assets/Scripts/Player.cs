@@ -23,8 +23,12 @@ public class Player : MonoBehaviour
     public Camera myCamera;
     private List<Vector2> pastPositionsXY = new List<Vector2>();
 
+    // game background
+    public GameObject backGround;
+
     public float iFrames;
     private float startLock;
+    private float rollTime;
 
     void Start()
     {
@@ -32,6 +36,7 @@ public class Player : MonoBehaviour
         health = 3;
         iFrames = 3.0f;
         startLock = 3.0f;
+        rollTime = 1.0f;
 
         // default positions
         for (int x = 0; x < 100; x++)
@@ -88,17 +93,43 @@ public class Player : MonoBehaviour
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x - 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x + 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
             }
+
+            // rolls
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (playerInput.y < 0)
+                {
+                    Debug.Log("hi");
+                    while (0.0f < rollTime)
+                    {
+                        rollTime -= Time.deltaTime;
+                        gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 100f * Time.deltaTime);
+
+                        // save ship position
+                        position = gameObject.transform.position;
+
+                        // update list
+                        pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+                        pastPositionsXY.RemoveAt(0);
+
+                        // move camera
+                        myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z - 5.0f);
+                    }
+                    rollTime = 1.0f;
+                }
+            }
+
+            // save ship position
+            position = gameObject.transform.position;
+
+            // update list
+            pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+            pastPositionsXY.RemoveAt(0);
+
+            // move camera + background
+            myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z - 5.0f);
+            backGround.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 30.0f);
         }
-
-        // save ship position
-        position = gameObject.transform.position;
-
-        // update list
-        pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
-        pastPositionsXY.RemoveAt(0);
-
-        // move camera
-        myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z - 5.0f);
     }
     
     // updates the input vector
