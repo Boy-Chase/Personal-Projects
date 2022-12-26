@@ -99,14 +99,21 @@ public class Player : MonoBehaviour
                 }
             }
 
+            // roll
             if (0.0f < rollTime)
             {
                 rollTime -= subtract;
                 if (rollDir == "down")
                 {
                     Debug.Log(rollTime);
-                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 40f * Time.deltaTime);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * subtract);
                 }
+            }
+
+            // if roll not happening, set rotation
+            if (rollTime < 0.0f)
+            {
+                gameObject.transform.rotation = new Quaternion(0, 0, 0, 1);
             }
 
             // left click check
