@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     public float iFrames;
     private float startLock;
     private float rollTime;
+    private float subtract;
+    private string rollDir;
 
     void Start()
     {
@@ -36,7 +38,7 @@ public class Player : MonoBehaviour
         health = 3;
         iFrames = 3.0f;
         startLock = 3.0f;
-        rollTime = 1.0f;
+        rollTime = 2.0f;
 
         // default positions
         for (int x = 0; x < 100; x++)
@@ -86,38 +88,34 @@ public class Player : MonoBehaviour
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
+            // start roll
+            if (Input.GetMouseButtonDown(1))
+            {
+                if (playerInput.y < 0)
+                {
+                    rollTime = 2.0f;
+                    subtract = Time.deltaTime;
+                    rollDir = "down";
+                }
+            }
+
+            if (0.0f < rollTime)
+            {
+                rollTime -= subtract;
+                if (rollDir == "down")
+                {
+                    Debug.Log(rollTime);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 40f * Time.deltaTime);
+                }
+            }
+
             // left click check
             if (Input.GetMouseButtonDown(0))
             {
                 // make bullets
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x - 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x + 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
-            }
-
-            // rolls
-            if (Input.GetMouseButtonDown(1))
-            {
-                if (playerInput.y < 0)
-                {
-                    Debug.Log("hi");
-                    while (0.0f < rollTime)
-                    {
-                        rollTime -= Time.deltaTime;
-                        gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 100f * Time.deltaTime);
-
-                        // save ship position
-                        position = gameObject.transform.position;
-
-                        // update list
-                        pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
-                        pastPositionsXY.RemoveAt(0);
-
-                        // move camera
-                        myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z - 5.0f);
-                    }
-                    rollTime = 1.0f;
-                }
-            }
+            }                 
 
             // save ship position
             position = gameObject.transform.position;
