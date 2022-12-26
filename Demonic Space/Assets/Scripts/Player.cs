@@ -28,12 +28,16 @@ public class Player : MonoBehaviour
 
     public float iFrames;
     private float startLock;
-    private float rollTime;
+    public float rollTime;
     private float subtract;
-    private string rollDir;
+    public string rollDir;
+    public Quaternion rot;
 
     void Start()
     {
+        gameObject.transform.Rotate(0, 90, 0);
+        rot = gameObject.transform.rotation;
+
         // set health + invincibilty + control lock
         health = 3;
         iFrames = 3.0f;
@@ -89,7 +93,7 @@ public class Player : MonoBehaviour
             }
 
             // start roll
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && rollDir == "")
             {
                 if (playerInput.y < 0)
                 {
@@ -97,15 +101,46 @@ public class Player : MonoBehaviour
                     subtract = Time.deltaTime;
                     rollDir = "down";
                 }
+                else if (playerInput.y > 0)
+                {
+                    rollTime = 2.0f;
+                    subtract = Time.deltaTime;
+                    rollDir = "up";
+                }
+                else if (playerInput.x < 0)
+                {
+                    rollTime = 2.0f;
+                    subtract = Time.deltaTime;
+                    rollDir = "left";
+                }
+                else if (playerInput.x > 0)
+                {
+                    rollTime = 2.0f;
+                    subtract = Time.deltaTime;
+                    rollDir = "right";
+                }
             }
 
             // roll
             if (0.0f < rollTime)
             {
                 rollTime -= subtract;
+
                 if (rollDir == "down")
                 {
                     Debug.Log(rollTime);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * subtract);
+                }
+                else if (rollDir == "up")
+                {
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z - 120f * subtract);
+                }
+                else if (rollDir == "left")
+                {
+                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 120f * subtract, 0, 0);
+                }
+                else if (rollDir == "right")
+                {
                     gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * subtract);
                 }
             }
@@ -113,7 +148,8 @@ public class Player : MonoBehaviour
             // if roll not happening, set rotation
             if (rollTime < 0.0f)
             {
-                gameObject.transform.rotation = new Quaternion(0, 0, 0, 1);
+                gameObject.transform.rotation = rot;
+                rollDir = "";
             }
 
             // left click check
