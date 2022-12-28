@@ -23,13 +23,13 @@ public class Player : MonoBehaviour
     public Camera myCamera;
     private List<Vector2> pastPositionsXY = new List<Vector2>();
 
-    // game background
+    // game background + stars
     public GameObject backGround;
+    public GameObject stars;
 
     public float iFrames;
     private float startLock;
     public float rollTime;
-    private float subtract;
     public string rollDir;
     public Quaternion rot;
 
@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
     {
         iFrames -= Time.deltaTime;
         startLock -= Time.deltaTime;
-        subtract = Time.deltaTime;
 
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
@@ -70,25 +69,25 @@ public class Player : MonoBehaviour
         if (startLock < 0.0f)
         {
             // key a (move left)
-            if (playerInput.x < 0 && -5.0f < gameObject.transform.position.x)
+            if (playerInput.x < 0 && -6.0f < gameObject.transform.position.x)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x - 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key d (move right)
-            if (playerInput.x > 0 && gameObject.transform.position.x < 5.0f)
+            if (playerInput.x > 0 && gameObject.transform.position.x < 6.0f)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x + 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key w (move up)
-            if (playerInput.y > 0 && gameObject.transform.position.y < 5.0f)
+            if (playerInput.y > 0 && gameObject.transform.position.y < 6.0f)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 4.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
             // key s (move down)
-            if (playerInput.y < 0 && -5.0f < gameObject.transform.position.y)
+            if (playerInput.y < 0 && -6.0f < gameObject.transform.position.y)
             {
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4.0f * Time.deltaTime, gameObject.transform.position.z);
             }
@@ -121,30 +120,30 @@ public class Player : MonoBehaviour
             // roll
             if (0.0f < rollTime)
             {
-                rollTime -= subtract;
+                rollTime -= Time.deltaTime;
 
                 if (rollDir == "down")
                 {
-                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * subtract);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * Time.deltaTime);
                 }
                 else if (rollDir == "up")
                 {
-                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z - 120f * subtract);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z - 120f * Time.deltaTime);
                 }
                 else if (rollDir == "left")
                 {
-                    gameObject.transform.Rotate(-(gameObject.transform.rotation.z + 120f * subtract), 0, 0);
+                    gameObject.transform.Rotate(-(gameObject.transform.rotation.z + 120f * Time.deltaTime), 0, 0);
                 }
                 else if (rollDir == "right")
                 {
-                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 120f * subtract, 0, 0);
+                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 240f * Time.deltaTime, 0, 0);
                 }
             }
 
             // if roll not happening, set rotation
             if (rollTime < 0.0f)
             {
-                rollTime -= subtract;
+                rollTime -= Time.deltaTime;
                 gameObject.transform.rotation = rot;
                 rollDir = "";
             }
@@ -164,9 +163,10 @@ public class Player : MonoBehaviour
             pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
             pastPositionsXY.RemoveAt(0);
 
-            // move camera + background
+            // move camera + background + stars
             myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z - 5.0f);
             backGround.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 30.0f);
+            stars.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 5.0f);
         }
     }
     
