@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     {
         iFrames -= Time.deltaTime;
         startLock -= Time.deltaTime;
+        subtract = Time.deltaTime;
 
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
@@ -93,30 +94,26 @@ public class Player : MonoBehaviour
             }
 
             // start roll
-            if (Input.GetMouseButtonDown(1) && rollDir == "")
+            if (Input.GetMouseButtonDown(1) && rollDir == "" && rollTime < -3.0f)
             {
                 if (playerInput.y < 0)
                 {
                     rollTime = 2.0f;
-                    subtract = Time.deltaTime;
                     rollDir = "down";
                 }
                 else if (playerInput.y > 0)
                 {
                     rollTime = 2.0f;
-                    subtract = Time.deltaTime;
                     rollDir = "up";
                 }
                 else if (playerInput.x < 0)
                 {
                     rollTime = 2.0f;
-                    subtract = Time.deltaTime;
                     rollDir = "left";
                 }
                 else if (playerInput.x > 0)
                 {
                     rollTime = 2.0f;
-                    subtract = Time.deltaTime;
                     rollDir = "right";
                 }
             }
@@ -128,7 +125,6 @@ public class Player : MonoBehaviour
 
                 if (rollDir == "down")
                 {
-                    Debug.Log(rollTime);
                     gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * subtract);
                 }
                 else if (rollDir == "up")
@@ -137,17 +133,18 @@ public class Player : MonoBehaviour
                 }
                 else if (rollDir == "left")
                 {
-                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 120f * subtract, 0, 0);
+                    gameObject.transform.Rotate(-(gameObject.transform.rotation.z + 120f * subtract), 0, 0);
                 }
                 else if (rollDir == "right")
                 {
-                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * subtract);
+                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 120f * subtract, 0, 0);
                 }
             }
 
             // if roll not happening, set rotation
             if (rollTime < 0.0f)
             {
+                rollTime -= subtract;
                 gameObject.transform.rotation = rot;
                 rollDir = "";
             }
@@ -182,7 +179,7 @@ public class Player : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // if Player is touching card
-        if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "asteroid") && iFrames < 0)
+        if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "asteroid") && iFrames < 0 && rollTime < 0)
         {
             health--;
             iFrames = 3.0f;
