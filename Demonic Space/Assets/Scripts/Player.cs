@@ -159,14 +159,14 @@ public class Player : MonoBehaviour
             // save ship position
             position = gameObject.transform.position;
 
-            // update list
-            pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
-            pastPositionsXY.RemoveAt(0);
-
             // move camera + background + stars
             myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z - 5.0f);
             backGround.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 30.0f);
             stars.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 5.0f);
+
+            // update list
+            pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
+            pastPositionsXY.RemoveAt(0);
         }
     }
     
