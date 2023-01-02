@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour
 {
     public GameObject Player;
     public GameObject Camera;
-
+    
     public float shootCooldown;
     public GameObject bullet;
 
@@ -62,7 +62,10 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // if Player is touching card
+        // increment score 
+        Player.GetComponent<Player>().score++;
+
+        // subtract health + destroy bullet
         if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
         {
             health--;
@@ -72,6 +75,11 @@ public class EnemyMovement : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+
+            // increment score 
+            Player.GetComponent<Player>().score++;
+            Player.GetComponent<Player>().score++;
+            Player.GetComponent<Player>().score++;
         }
     }
 }

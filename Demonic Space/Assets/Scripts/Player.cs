@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    // health of the player
+    // health + score of the player
     public int health;
+    public int score;
 
     // current position of the ship
     public Vector3 position;
@@ -38,8 +39,9 @@ public class Player : MonoBehaviour
         gameObject.transform.Rotate(0, 90, 0);
         rot = gameObject.transform.rotation;
 
-        // set health + invincibilty + control lock
+        // set health + score + invincibilty + control lock
         health = 3;
+        score = 0;
         iFrames = 3.0f;
         startLock = 3.0f;
         rollTime = 2.0f;
@@ -124,19 +126,19 @@ public class Player : MonoBehaviour
 
                 if (rollDir == "down")
                 {
-                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 120f * Time.deltaTime);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 110f * Time.deltaTime);
                 }
                 else if (rollDir == "up")
                 {
-                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z - 120f * Time.deltaTime);
+                    gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z - 110f * Time.deltaTime);
                 }
                 else if (rollDir == "left")
                 {
-                    gameObject.transform.Rotate(-(gameObject.transform.rotation.z + 120f * Time.deltaTime), 0, 0);
+                    gameObject.transform.Rotate(-(gameObject.transform.rotation.z + 110f * Time.deltaTime), 0, 0);
                 }
                 else if (rollDir == "right")
                 {
-                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 240f * Time.deltaTime, 0, 0);
+                    gameObject.transform.Rotate(gameObject.transform.rotation.z + 380f * Time.deltaTime, 0, 0);
                 }
             }
 
