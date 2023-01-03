@@ -16,7 +16,14 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        health = 5;
+        if (gameObject.tag == "boss")
+        {
+            health = 30;
+        }
+        else
+        {
+            health = 5;
+        }
 
         shootCooldown = 0.0f;
 
@@ -51,11 +58,38 @@ public class EnemyMovement : MonoBehaviour
             gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 25);
         }
 
-        // if cooldown is greater than sec, fire a bullet
+        // if a boss class enemy, move like this
+        if (gameObject.tag == "boss")
+        {
+            // set position based on camera
+            gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 30);
+        }
+
+        // if cooldown is greater than sec, fire a bullet(s)
         if (5.0f < shootCooldown)
         {
-            Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
-            bullet.GetComponent<Bullet>().playerMade = false;
+            if (gameObject.tag == "boss")
+            {
+                Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                bullet.GetComponent<Bullet>().playerMade = false;
+
+                Instantiate(bullet, new Vector3(gameObject.transform.position.x - 2, gameObject.transform.position.y - 2, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                bullet.GetComponent<Bullet>().playerMade = false;
+
+                Instantiate(bullet, new Vector3(gameObject.transform.position.x - 2, gameObject.transform.position.y + 2, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                bullet.GetComponent<Bullet>().playerMade = false;
+
+                Instantiate(bullet, new Vector3(gameObject.transform.position.x + 2, gameObject.transform.position.y - 2, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                bullet.GetComponent<Bullet>().playerMade = false;
+
+                Instantiate(bullet, new Vector3(gameObject.transform.position.x + 2, gameObject.transform.position.y + 2, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                bullet.GetComponent<Bullet>().playerMade = false;
+            }
+            else
+            {
+                Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
+                bullet.GetComponent<Bullet>().playerMade = false;
+            }
             shootCooldown = 0.0f;
         }
     }

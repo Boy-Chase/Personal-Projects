@@ -9,6 +9,7 @@ TagManager:
   - asteroid
   - player
   - bullet
+  - boss
   layers:
   - Default
   - TransparentFX
