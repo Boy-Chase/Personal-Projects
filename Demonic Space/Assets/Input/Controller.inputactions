@@ -12,6 +12,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Demonic",
+                    "type": "Value",
+                    "id": "b84264fe-2f70-4a81-8992-7a7ba6d36fd7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -69,6 +77,17 @@
                     "action": "Action",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "197d58db-e70e-4e82-b6c2-11a31c54608c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Demonic",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

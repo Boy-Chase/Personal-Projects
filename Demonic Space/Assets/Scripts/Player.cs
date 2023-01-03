@@ -178,6 +178,12 @@ public class Player : MonoBehaviour
         playerInput = value.Get<Vector2>();
     }
 
+    // updates the input vector
+    public void OnDemonic(InputValue value)
+    {
+        Debug.Log("hi");
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "boss" || other.tag == "asteroid") && iFrames < 0 && rollTime < 0)
