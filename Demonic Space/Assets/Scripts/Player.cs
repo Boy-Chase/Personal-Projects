@@ -11,6 +11,12 @@ public class Player : MonoBehaviour
     public int health;
     public int score;
 
+    // demon time variables
+    public bool demonTimeActive;
+    private int demonTimeUses;
+    private float demonTimeTimer;
+    public int demonTimeIncrementer;
+
     // current position of the ship
     public Vector3 position;
 
@@ -46,6 +52,12 @@ public class Player : MonoBehaviour
         startLock = 3.0f;
         rollTime = 2.0f;
 
+        // set demon time variables
+        demonTimeActive = false;
+        demonTimeUses = 0;
+        demonTimeTimer = 0.0f;
+        demonTimeIncrementer = 0;
+
         // default positions
         for (int x = 0; x < 100; x++)
         {
@@ -59,14 +71,37 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // update all timers
         iFrames -= Time.deltaTime;
         startLock -= Time.deltaTime;
+        if (demonTimeActive)
+        {
+            demonTimeTimer += Time.deltaTime;
+        }
+
+        // if DT time end, end DT
+        if (6.66f <= demonTimeTimer)
+        {
+            demonTimeActive = false;
+            demonTimeTimer = 0.0f;
+            stars.GetComponent<ParticleSystem>().Play();
+        }
 
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
 
-        // move the player forward
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 7.0f * Time.deltaTime);
+        // DT use check
+        if (50 <= demonTimeIncrementer)
+        {
+            demonTimeUses++;
+            demonTimeIncrementer -= 50;
+        }
+
+        if (!demonTimeActive)
+        {
+            // move the player forward
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 7.0f * Time.deltaTime);
+        }
 
         if (startLock < 0.0f)
         {
@@ -181,7 +216,12 @@ public class Player : MonoBehaviour
     // updates the input vector
     public void OnDemonic(InputValue value)
     {
-        Debug.Log("hi");
+        if (0 < demonTimeUses)
+        {
+            demonTimeUses--;
+            demonTimeActive = true;
+            stars.GetComponent<ParticleSystem>().Pause();
+        }
     }
 
     void OnTriggerEnter(Collider other)

@@ -41,28 +41,31 @@ public class EnemyMovement : MonoBehaviour
         // all bullets in this script are made by an enemy
         bullet.GetComponent<Bullet>().playerMade = false;
 
-        // increment cooldown
-        shootCooldown += Time.deltaTime;
-
-        // if a static class enemy, move like this
-        if (gameObject.tag == "static")
+        if (!Player.GetComponent<Player>().demonTimeActive)
         {
-            // set position based on camera
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, Camera.transform.position.z + 25);
-        }
+            // increment cooldown
+            shootCooldown += Time.deltaTime;
 
-        // if a follower class enemy, move like this
-        if (gameObject.tag == "follower")
-        {
-            // set position based on camera
-            gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 25);
-        }
+            // if a static class enemy, move like this
+            if (gameObject.tag == "static")
+            {
+                // set position based on camera
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, Camera.transform.position.z + 25);
+            }
 
-        // if a boss class enemy, move like this
-        if (gameObject.tag == "boss")
-        {
-            // set position based on camera
-            gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 30);
+            // if a follower class enemy, move like this
+            if (gameObject.tag == "follower")
+            {
+                // set position based on camera
+                gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 25);
+            }
+
+            // if a boss class enemy, move like this
+            if (gameObject.tag == "boss")
+            {
+                // set position based on camera
+                gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 30);
+            }
         }
 
         // if cooldown is greater than sec, fire a bullet(s)
@@ -99,6 +102,9 @@ public class EnemyMovement : MonoBehaviour
         // increment score 
         Player.GetComponent<Player>().score++;
 
+        // increment DT
+        Player.GetComponent<Player>().demonTimeIncrementer++;
+
         // subtract health + destroy bullet
         if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
         {
@@ -114,6 +120,12 @@ public class EnemyMovement : MonoBehaviour
             Player.GetComponent<Player>().score++;
             Player.GetComponent<Player>().score++;
             Player.GetComponent<Player>().score++;
+
+
+            // increment DT
+            Player.GetComponent<Player>().demonTimeIncrementer++;
+            Player.GetComponent<Player>().demonTimeIncrementer++;
+            Player.GetComponent<Player>().demonTimeIncrementer++;
         }
     }
 }

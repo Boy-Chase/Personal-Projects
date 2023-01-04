@@ -5,9 +5,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public GameObject Player;
     public bool playerMade = false;
     public float rotate;
     private float timer = 0.0f;
+
+    private void Start()
+    {
+        Player = GameObject.FindGameObjectWithTag("player");
+    }
 
     // Update is called once per frame
     void Update()
@@ -22,15 +28,19 @@ public class Bullet : MonoBehaviour
         // rotate it
         gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 150f * Time.deltaTime);
 
-        if (playerMade)
+
+        if (!Player.GetComponent<Player>().demonTimeActive)
         {
-            // move the bullet forward
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 20.0f * Time.deltaTime);
-        }
-        else
-        {
-            // move the bullet backward
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 20.0f * Time.deltaTime);
+            if (playerMade)
+            {
+                // move the bullet forward
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 20.0f * Time.deltaTime);
+            }
+            else
+            {
+                // move the bullet backward
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 20.0f * Time.deltaTime);
+            }
         }
     }
 }
