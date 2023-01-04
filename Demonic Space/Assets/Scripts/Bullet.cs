@@ -28,7 +28,6 @@ public class Bullet : MonoBehaviour
         // rotate it
         gameObject.transform.Rotate(0, 0, gameObject.transform.rotation.z + 150f * Time.deltaTime);
 
-
         if (!Player.GetComponent<Player>().demonTimeActive)
         {
             if (playerMade)

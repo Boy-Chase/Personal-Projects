@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -231,6 +232,11 @@ public class Player : MonoBehaviour
             health--;
             iFrames = 3.0f;
             Destroy(other.gameObject);
+
+            if (health <= 0)
+            {
+                SceneManager.LoadScene(2);
+            }
         }
     }
 }
