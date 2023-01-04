@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
 
     // demon time variables
     public bool demonTimeActive;
-    private int demonTimeUses;
+    public int demonTimeUses;
     private float demonTimeTimer;
     public int demonTimeIncrementer;
 
