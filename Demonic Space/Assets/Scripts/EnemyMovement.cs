@@ -99,8 +99,11 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // increment score 
-        Player.GetComponent<Player>().score++;
+        if (other.GetComponent<Bullet>().playerMade)
+        {
+            // increment score 
+            Player.GetComponent<Player>().score++;
+        }
 
         // increment DT
         Player.GetComponent<Player>().demonTimeIncrementer++;

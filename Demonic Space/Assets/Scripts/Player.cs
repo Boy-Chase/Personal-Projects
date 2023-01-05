@@ -41,6 +41,13 @@ public class Player : MonoBehaviour
     public string rollDir;
     public Quaternion rot;
 
+    // sound
+    // from: https://omegaosg.itch.io/gameboy-sfx-pack
+    public AudioClip shootSFX;
+    public AudioClip demonTimeSFX;
+    public AudioClip hurtSFX;
+    public AudioClip rollSFX;
+
     void Start()
     {
         gameObject.transform.Rotate(0, 90, 0);
@@ -109,30 +116,32 @@ public class Player : MonoBehaviour
             // key a (move left)
             if (playerInput.x < 0 && -7.0f < gameObject.transform.position.x)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 5.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key d (move right)
             if (playerInput.x > 0 && gameObject.transform.position.x < 7.0f)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 4.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 5.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key w (move up)
             if (playerInput.y > 0 && gameObject.transform.position.y < 7.0f)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 4.0f * Time.deltaTime, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
             // key s (move down)
             if (playerInput.y < 0 && -7.0f < gameObject.transform.position.y)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 4.0f * Time.deltaTime, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 5.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
             // start roll
             if (Input.GetMouseButtonDown(1) && rollDir == "" && rollTime < -3.0f)
             {
+                AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
+
                 if (playerInput.y < 0)
                 {
                     rollTime = 2.0f;
@@ -189,6 +198,8 @@ public class Player : MonoBehaviour
             // left click check
             if (Input.GetMouseButtonDown(0))
             {
+                AudioSource.PlayClipAtPoint(shootSFX, gameObject.transform.position);
+
                 // make bullets
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x - 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x + 0.75f, gameObject.transform.position.y, gameObject.transform.position.z + 0.5f), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
@@ -219,6 +230,7 @@ public class Player : MonoBehaviour
     {
         if (0 < demonTimeUses)
         {
+            AudioSource.PlayClipAtPoint(demonTimeSFX, gameObject.transform.position);
             demonTimeUses--;
             demonTimeActive = true;
             stars.GetComponent<ParticleSystem>().Pause();
@@ -229,6 +241,8 @@ public class Player : MonoBehaviour
     {
         if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "boss" || other.tag == "asteroid") && iFrames < 0 && rollTime < 0)
         {
+            AudioSource.PlayClipAtPoint(hurtSFX, gameObject.transform.position);
+
             health--;
             iFrames = 3.0f;
             Destroy(other.gameObject);
