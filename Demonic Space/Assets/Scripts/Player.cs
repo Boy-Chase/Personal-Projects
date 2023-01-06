@@ -252,5 +252,11 @@ public class Player : MonoBehaviour
                 SceneManager.LoadScene(2);
             }
         }
+
+        if (other.tag == "health")
+        {
+            health++;
+            Destroy(other.gameObject);
+        }
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - player
   - bullet
   - boss
+  - health
   layers:
   - Default
   - TransparentFX
