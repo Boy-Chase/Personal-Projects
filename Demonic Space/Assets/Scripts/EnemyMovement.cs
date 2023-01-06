@@ -99,36 +99,39 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Bullet>().playerMade)
+        if (other.gameObject.tag == "bullet")
         {
-            // increment score 
-            Player.GetComponent<Player>().score++;
-        }
-
-        // increment DT
-        Player.GetComponent<Player>().demonTimeIncrementer++;
-
-        // subtract health + destroy bullet
-        if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
-        {
-            health--;
-            Destroy(other.gameObject);
-        }
-
-        if (health <= 0)
-        {
-            Destroy(gameObject);
-
-            // increment score 
-            Player.GetComponent<Player>().score++;
-            Player.GetComponent<Player>().score++;
-            Player.GetComponent<Player>().score++;
-
+            if (other.GetComponent<Bullet>().playerMade)
+            {
+                // increment score 
+                Player.GetComponent<Player>().score++;
+            }
 
             // increment DT
             Player.GetComponent<Player>().demonTimeIncrementer++;
-            Player.GetComponent<Player>().demonTimeIncrementer++;
-            Player.GetComponent<Player>().demonTimeIncrementer++;
+
+            // subtract health + destroy bullet
+            if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
+            {
+                health--;
+                Destroy(other.gameObject);
+            }
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+
+                // increment score 
+                Player.GetComponent<Player>().score++;
+                Player.GetComponent<Player>().score++;
+                Player.GetComponent<Player>().score++;
+
+
+                // increment DT
+                Player.GetComponent<Player>().demonTimeIncrementer++;
+                Player.GetComponent<Player>().demonTimeIncrementer++;
+                Player.GetComponent<Player>().demonTimeIncrementer++;
+            }
         }
     }
 }
