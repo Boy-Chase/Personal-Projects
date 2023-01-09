@@ -421,6 +421,8 @@ MonoBehaviour:
   shootCooldown: 0
   bullet: {fileID: 4210404922740638006, guid: f762573830901bb49858810797a469bd, type: 3}
   health: 0
+  shootSFX: {fileID: 8300000, guid: cb3f37bb22c91cd43a2c2691e0fbf277, type: 3}
+  hitSFX: {fileID: 8300000, guid: 66a9045b7f7a3694d8d7ad4afa5dfaae, type: 3}
 --- !u!1 &4789249175726477355
 GameObject:
   m_ObjectHideFlags: 0

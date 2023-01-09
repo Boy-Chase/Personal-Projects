@@ -10,8 +10,12 @@ public class EnemyMovement : MonoBehaviour
     
     public float shootCooldown;
     public GameObject bullet;
-
+    
     public int health;
+
+    // SFX
+    public AudioClip shootSFX;
+    public AudioClip hitSFX;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +82,8 @@ public class EnemyMovement : MonoBehaviour
         // if cooldown is greater than sec, fire a bullet(s)
         if (5.0f < shootCooldown)
         {
+            AudioSource.PlayClipAtPoint(shootSFX, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 20));
+
             if (gameObject.tag == "boss")
             {
                 Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 1), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
@@ -126,6 +132,8 @@ public class EnemyMovement : MonoBehaviour
 
             if (health <= 0)
             {
+                AudioSource.PlayClipAtPoint(hitSFX, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 15));
+
                 Destroy(gameObject);
 
                 // increment score 

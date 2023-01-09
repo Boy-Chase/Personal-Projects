@@ -7080,6 +7080,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 96e46884de3df1440ab1d0f723192276, type: 3}
     - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
+      propertyPath: healthSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1fd5899e90413f5488c38a9e539325f0, type: 3}
+    - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: backGround
       value: 
       objectReference: {fileID: 103674172}

@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
     public AudioClip shootSFX;
     public AudioClip demonTimeSFX;
     public AudioClip hurtSFX;
+    public AudioClip healthSFX;
     public AudioClip rollSFX;
 
     void Start()
@@ -255,6 +256,8 @@ public class Player : MonoBehaviour
 
         if (other.tag == "health")
         {
+            AudioSource.PlayClipAtPoint(healthSFX, gameObject.transform.position);
+
             health++;
             Destroy(other.gameObject);
         }
