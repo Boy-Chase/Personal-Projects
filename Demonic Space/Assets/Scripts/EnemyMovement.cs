@@ -18,7 +18,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (gameObject.tag == "boss")
         {
-            health = 30;
+            health = 50;
+        }
+        else if (gameObject.tag == "follower")
+        {
+            health = 8;
         }
         else
         {
@@ -65,6 +69,9 @@ public class EnemyMovement : MonoBehaviour
             {
                 // set position based on camera
                 gameObject.transform.position = new Vector3(Camera.transform.position.x, Camera.transform.position.y, Camera.transform.position.z + 30);
+
+                // increment cooldown AGAIN
+                shootCooldown += Time.deltaTime;
             }
         }
 
