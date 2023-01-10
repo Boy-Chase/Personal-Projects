@@ -240,7 +240,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "boss" || other.tag == "asteroid") && iFrames < 0 && rollTime < 0)
+        if (((other.tag == "bullet" && !other.gameObject.GetComponent<Bullet>().playerMade) || other.tag == "follower" || other.tag == "static" || other.tag == "boss" || other.tag == "asteroid" || other.tag == "ring") && iFrames < 0 && rollTime < 0)
         {
             AudioSource.PlayClipAtPoint(hurtSFX, gameObject.transform.position);
 

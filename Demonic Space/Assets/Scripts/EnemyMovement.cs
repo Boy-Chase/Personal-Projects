@@ -82,7 +82,7 @@ public class EnemyMovement : MonoBehaviour
         // if cooldown is greater than sec, fire a bullet(s)
         if (5.0f < shootCooldown)
         {
-            AudioSource.PlayClipAtPoint(shootSFX, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 20));
+            AudioSource.PlayClipAtPoint(shootSFX, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 25));
 
             if (gameObject.tag == "boss")
             {
