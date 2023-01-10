@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         rot = gameObject.transform.rotation;
 
         // set health + score + invincibilty + control lock
-        health = 1000;
+        health = 3;
         score = 0;
         iFrames = 3.0f;
         startLock = 3.0f;
