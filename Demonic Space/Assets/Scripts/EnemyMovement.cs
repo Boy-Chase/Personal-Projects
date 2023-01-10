@@ -26,11 +26,11 @@ public class EnemyMovement : MonoBehaviour
         }
         else if (gameObject.tag == "follower")
         {
-            health = 8;
+            health = 10;
         }
         else
         {
-            health = 5;
+            health = 7;
         }
 
         shootCooldown = 0.0f;
@@ -80,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         // if cooldown is greater than sec, fire a bullet(s)
-        if (5.0f < shootCooldown)
+        if (4.0f < shootCooldown)
         {
             AudioSource.PlayClipAtPoint(shootSFX, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 25));
 
