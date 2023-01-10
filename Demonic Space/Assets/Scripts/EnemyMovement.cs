@@ -58,7 +58,7 @@ public class EnemyMovement : MonoBehaviour
             if (gameObject.tag == "static")
             {
                 // set position based on camera
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, Camera.transform.position.z + 25);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, Camera.transform.position.y - 2, Camera.transform.position.z + 25);
             }
 
             // if a follower class enemy, move like this
@@ -80,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         // if cooldown is greater than sec, fire a bullet(s)
-        if (4.0f < shootCooldown)
+        if (.0f < shootCooldown)
         {
             AudioSource.PlayClipAtPoint(shootSFX, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 25));
 
@@ -118,10 +118,10 @@ public class EnemyMovement : MonoBehaviour
             {
                 // increment score 
                 Player.GetComponent<Player>().score++;
-            }
 
-            // increment DT
-            Player.GetComponent<Player>().demonTimeIncrementer++;
+                // increment DT
+                Player.GetComponent<Player>().demonTimeIncrementer++;
+            }
 
             // subtract health + destroy bullet
             if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
