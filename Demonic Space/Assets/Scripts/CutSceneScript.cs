@@ -9,8 +9,8 @@ public class CutSceneScript : MonoBehaviour
     private float landedTimer = 0.0f;
 
     public AudioClip winSFX;
-    private bool won = false;
-    private float wonTimer = 0.0f;
+    private bool win = false;
+    private float winTimer = 0.0f;
 
     int x = 0;
 
@@ -21,7 +21,7 @@ public class CutSceneScript : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 20f * Time.deltaTime);
         }
-        else if (x < 1000)
+        else if (x < 1000f)
         {
             gameObject.transform.Rotate(0, 15f * Time.deltaTime, 0);
             x++;
@@ -32,7 +32,29 @@ public class CutSceneScript : MonoBehaviour
         }
         else
         {
-            AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
+            if (!landed)
+            {
+                AudioSource.PlayClipAtPoint(landSFX, gameObject.transform.position);
+                landed = true;
+            }
+
+            landedTimer += Time.deltaTime;
+
+            if (2f < landedTimer)
+            {
+                if (!win)
+                {
+                    AudioSource.PlayClipAtPoint(winSFX, gameObject.transform.position);
+                    win = true;
+                }
+
+                winTimer += Time.deltaTime;
+
+                if (4f < winTimer)
+                {
+                    Debug.Log("hi");
+                }
+            }
         }
     }
 }

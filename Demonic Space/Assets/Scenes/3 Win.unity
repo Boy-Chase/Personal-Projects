@@ -1380,6 +1380,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2194e9c8c5d9ba74c8343601e1cdb20d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  landSFX: {fileID: 8300000, guid: be4eb35df0849dc48b26511372a8e8dd, type: 3}
+  winSFX: {fileID: 8300000, guid: 1fd5899e90413f5488c38a9e539325f0, type: 3}
 --- !u!1 &1830903534
 GameObject:
   m_ObjectHideFlags: 0
