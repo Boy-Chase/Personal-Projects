@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2580742980219291402}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.666, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1097981826143955597
 MeshFilter:
@@ -121,6 +121,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8943236222496871579}
+  - component: {fileID: 2200638776613557613}
+  - component: {fileID: 4756260684380338125}
   m_Layer: 0
   m_Name: Ring
   m_TagString: ring
@@ -139,17 +141,47 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_Children:
-  - {fileID: 8182342915453066768}
-  - {fileID: 6192540728468779739}
-  - {fileID: 3170682686467492189}
   - {fileID: 5698028894382979887}
   - {fileID: 2113415190031725540}
   - {fileID: 7200976680709432788}
   - {fileID: 8000172131568962989}
   - {fileID: 1208710073244189973}
+  - {fileID: 8182342915453066768}
+  - {fileID: 6192540728468779739}
+  - {fileID: 3170682686467492189}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &2200638776613557613
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344991735639949621}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!64 &4756260684380338125
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344991735639949621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &5726822182379303598
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,7 +197,7 @@ GameObject:
   - component: {fileID: 6626657801413677032}
   m_Layer: 0
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -182,7 +214,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.666, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!33 &64577861473182025
 MeshFilter:
@@ -277,7 +309,7 @@ GameObject:
   - component: {fileID: 5092710792612193097}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,7 +326,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.666, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!33 &2347625471985748380
 MeshFilter:
@@ -389,7 +421,7 @@ GameObject:
   - component: {fileID: 8794681529597761242}
   m_Layer: 0
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +438,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.666, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
 --- !u!33 &3144879992755277330
 MeshFilter:
@@ -501,7 +533,7 @@ GameObject:
   - component: {fileID: 2937838617328834592}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -518,7 +550,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.66599995, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &6588102920105812078
 MeshFilter:
@@ -613,7 +645,7 @@ GameObject:
   - component: {fileID: 2760483195686672084}
   m_Layer: 0
   m_Name: Cube (4)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,7 +662,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.66599995, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!33 &4606908888309793229
 MeshFilter:
@@ -725,7 +757,7 @@ GameObject:
   - component: {fileID: 3516890102742702450}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,7 +774,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.666, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 2
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 45}
 --- !u!33 &6359357723715465477
 MeshFilter:
@@ -837,7 +869,7 @@ GameObject:
   - component: {fileID: 6126966283372306561}
   m_Layer: 0
   m_Name: Cube (7)
-  m_TagString: Untagged
+  m_TagString: ring
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -854,7 +886,7 @@ Transform:
   m_LocalScale: {x: 4, y: 0.666, z: 0.666}
   m_Children: []
   m_Father: {fileID: 8943236222496871579}
-  m_RootOrder: 6
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3424253522872455513
 MeshFilter:

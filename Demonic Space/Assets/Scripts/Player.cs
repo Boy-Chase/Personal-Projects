@@ -217,6 +217,13 @@ public class Player : MonoBehaviour
             // update list
             pastPositionsXY.Add(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
             pastPositionsXY.RemoveAt(0);
+
+            // win condition
+            if (1600.0f < gameObject.transform.position.z)
+            {
+                PlayerPrefs.SetInt("score", score);
+                SceneManager.LoadScene(3);
+            }
         }
     }
     

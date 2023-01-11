@@ -6229,6 +6229,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 610687439}
     - target: {fileID: 3252514805430848258, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3252514805430848258, guid: 7cbd94104595f954892b25ce7873feaf, type: 3}
       propertyPath: tag.Array.size
       value: 69
       objectReference: {fileID: 0}

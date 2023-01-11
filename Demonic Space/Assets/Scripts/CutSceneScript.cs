@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CutSceneScript : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class CutSceneScript : MonoBehaviour
     private bool win = false;
     private float winTimer = 0.0f;
 
+    public Text winText;
+
     int x = 0;
 
     // Update is called once per frame
@@ -19,7 +22,7 @@ public class CutSceneScript : MonoBehaviour
     {
         if (gameObject.transform.position.z < 41.5f)
         {
-            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 20f * Time.deltaTime);
+            gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 25f * Time.deltaTime);
         }
         else if (x < 1000f)
         {
@@ -50,9 +53,9 @@ public class CutSceneScript : MonoBehaviour
 
                 winTimer += Time.deltaTime;
 
-                if (4f < winTimer)
+                if (1f < winTimer)
                 {
-                    Debug.Log("hi");
+                    winText.text = "Mission Complete! Score: " + PlayerPrefs.GetInt("score");
                 }
             }
         }
