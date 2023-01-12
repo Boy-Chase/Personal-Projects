@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -141,25 +140,27 @@ public class Player : MonoBehaviour
             // start roll
             if (Input.GetMouseButtonDown(1) && rollDir == "" && rollTime < -3.0f)
             {
-                AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
-
                 if (playerInput.y < 0)
                 {
+                    AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
                     rollTime = 2.0f;
                     rollDir = "down";
                 }
                 else if (playerInput.y > 0)
                 {
+                    AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
                     rollTime = 2.0f;
                     rollDir = "up";
                 }
                 else if (playerInput.x < 0)
                 {
+                    AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
                     rollTime = 2.0f;
                     rollDir = "left";
                 }
                 else if (playerInput.x > 0)
                 {
+                    AudioSource.PlayClipAtPoint(rollSFX, gameObject.transform.position);
                     rollTime = 2.0f;
                     rollDir = "right";
                 }
@@ -221,6 +222,7 @@ public class Player : MonoBehaviour
             // win condition
             if (1600.0f < gameObject.transform.position.z)
             {
+                score += health * 5;
                 PlayerPrefs.SetInt("score", score);
                 SceneManager.LoadScene(3);
             }
