@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -5810,6 +5810,10 @@ PrefabInstance:
       propertyPath: demonTimeSFX
       value: 
       objectReference: {fileID: 8300000, guid: 66a9045b7f7a3694d8d7ad4afa5dfaae, type: 3}
+    - target: {fileID: 7636783071858456714, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7636783071858456716, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -5858,7 +5862,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ship
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
 --- !u!1 &1907287502
 GameObject:

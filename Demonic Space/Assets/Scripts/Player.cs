@@ -211,7 +211,7 @@ public class Player : MonoBehaviour
             position = gameObject.transform.position;
 
             // move camera + background + stars
-            myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y + 2, position.z - 7.0f);
+            myCamera.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y + 2, position.z - 8.5f);
             backGround.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 30.0f);
             stars.transform.position = new Vector3(pastPositionsXY[0].x, pastPositionsXY[0].y, position.z + 5.0f);
 
