@@ -116,25 +116,25 @@ public class Player : MonoBehaviour
             // key a (move left)
             if (playerInput.x < 0 && -7.0f < gameObject.transform.position.x)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 5.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x - 8.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key d (move right)
             if (playerInput.x > 0 && gameObject.transform.position.x < 7.0f)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 5.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x + 8.0f * Time.deltaTime, gameObject.transform.position.y, gameObject.transform.position.z);
             }
 
             // key w (move up)
             if (playerInput.y > 0 && gameObject.transform.position.y < 7.0f)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5.0f * Time.deltaTime, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 8.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
             // key s (move down)
             if (playerInput.y < 0 && -7.0f < gameObject.transform.position.y)
             {
-                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 5.0f * Time.deltaTime, gameObject.transform.position.z);
+                gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 8.0f * Time.deltaTime, gameObject.transform.position.z);
             }
 
             // start roll
