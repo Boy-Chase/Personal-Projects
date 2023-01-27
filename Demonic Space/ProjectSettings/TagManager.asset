@@ -12,6 +12,7 @@ TagManager:
   - boss
   - health
   - ring
+  - probe
   layers:
   - Default
   - TransparentFX
