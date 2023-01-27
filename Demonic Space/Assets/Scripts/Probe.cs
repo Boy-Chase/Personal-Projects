@@ -23,6 +23,8 @@ public class Probe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        gameObject.transform.position = new Vector3(Player.transform.position.x - 2, Player.transform.position.y, Player.transform.position.z - 2);
+
         // increment cooldown
         shootCooldown += Time.deltaTime;
 
