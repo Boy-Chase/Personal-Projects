@@ -57,6 +57,11 @@ public class CutSceneScript : MonoBehaviour
                 {
                     winText.text = "Mission Complete! Score: " + PlayerPrefs.GetInt("score");
                 }
+
+                if (5f < winTimer)
+                {
+
+                }
             }
         }
     }
