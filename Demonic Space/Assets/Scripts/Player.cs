@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public int health;
     public int score;
     public int level;
+    public int levelFinish;
     public float damage;
 
     // inventory
@@ -71,6 +72,19 @@ public class Player : MonoBehaviour
         rollTime = 2.0f;
         damage = 1.0f;
         level = PlayerPrefs.GetInt("level", 4);
+
+        if (level == 4)
+        {
+            levelFinish = 600;
+        }
+        else if (level == 5)
+        {
+            levelFinish = 600;
+        }
+        else if (level == 6)
+        {
+            levelFinish = 600;
+        }
 
         // set demon time variables
         demonTimeActive = false;
@@ -288,7 +302,7 @@ public class Player : MonoBehaviour
             pastPositionsXY.RemoveAt(0);
 
             // win condition
-            if (1600.0f < gameObject.transform.position.z)
+            if (/*1600.0f*/ levelFinish < gameObject.transform.position.z)
             {
                 level++;
                 score += health * 5;
