@@ -7236,7 +7236,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 1fd5899e90413f5488c38a9e539325f0, type: 3}
     - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: inventory
-      value: ppp
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: backGround

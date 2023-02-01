@@ -29,7 +29,7 @@ public class ShopAndInventory : MonoBehaviour
         if (20 < funds)
         {
             funds -= 20;
-            inventory += "ps";
+            inventory += "p";
         }
     }
 
