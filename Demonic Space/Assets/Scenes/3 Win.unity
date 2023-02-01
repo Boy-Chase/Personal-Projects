@@ -300,7 +300,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 112108384}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750880024}
+        m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
+        m_MethodName: buyBeam
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &112108384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,7 +889,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 593938810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750880024}
+        m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
+        m_MethodName: buyThruster
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &593938810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,7 +1184,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 697963962}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750880024}
+        m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
+        m_MethodName: buyProbe
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &697963962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1733,7 +1769,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 832278121}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750880024}
+        m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
+        m_MethodName: buyBlaster
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &832278121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1854,7 +1902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 834873263}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750880024}
+        m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
+        m_MethodName: ToLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &834873263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2716,6 +2776,7 @@ GameObject:
   - component: {fileID: 1750880021}
   - component: {fileID: 1750880023}
   - component: {fileID: 1750880022}
+  - component: {fileID: 1750880024}
   m_Layer: 5
   m_Name: Shop Panel
   m_TagString: Untagged
@@ -2788,6 +2849,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1750880020}
   m_CullTransparentMesh: 1
+--- !u!114 &1750880024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1750880020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4113b90853d2f344c9bd0b422a0d608b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  funds: 0
+  inventory: []
+  fundsText: {fileID: 0}
 --- !u!1 &1830903534
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +3120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1981159714}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1750880024}
+        m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
+        m_MethodName: buyShield
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1981159714
 MonoBehaviour:
   m_ObjectHideFlags: 0
