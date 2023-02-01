@@ -26,9 +26,9 @@ public class ShopAndInventory : MonoBehaviour
 
     public void buyProbe()
     {
-        if (100 < funds)
+        if (20 < funds)
         {
-            funds -= 100;
+            funds -= 20;
             inventory += "ps";
         }
     }

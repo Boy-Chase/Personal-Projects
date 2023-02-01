@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public string inventory;
     private List<GameObject> probes = new List<GameObject>();
     public GameObject probe;
+    public int ps;
 
     // demon time variables
     public bool demonTimeActive;
@@ -101,7 +102,7 @@ public class Player : MonoBehaviour
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
 
-        int ps = 0;
+        ps = 0;
 
         // load in inventory 
         foreach (char i in inventory)
@@ -116,19 +117,19 @@ public class Player : MonoBehaviour
 
                 if (ps == 0)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(-5, 0);
+                    p.GetComponent<Probe>().relXY = new Vector2(-3, 0);
                 }
                 else if (ps == 1)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(5, 0);
+                    p.GetComponent<Probe>().relXY = new Vector2(3, 0);
                 }
                 else if (ps == 2)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(5, 0);
+                    p.GetComponent<Probe>().relXY = new Vector2(3, 0);
                 }
                 else if (ps == 3)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(0, -5);
+                    p.GetComponent<Probe>().relXY = new Vector2(0, -3);
                 }
                 else if (ps == 4)
                 {
@@ -146,7 +147,8 @@ public class Player : MonoBehaviour
                 {
                     p.GetComponent<Probe>().relXY = new Vector2(2.5f, -2.5f);
                 }
-                
+
+                probes.Add(p);
                 ps++;
             }
         }
@@ -158,7 +160,7 @@ public class Player : MonoBehaviour
         foreach(GameObject p in probes)
         {
             // updates probe positions
-            p.gameObject.transform.position = new Vector3(gameObject.transform.position.z + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.z + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
+            p.gameObject.transform.position = new Vector3(gameObject.transform.position.x + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.y + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
         }
 
         // update all timers
