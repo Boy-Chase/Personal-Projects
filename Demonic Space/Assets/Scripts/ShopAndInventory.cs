@@ -71,6 +71,6 @@ public class ShopAndInventory : MonoBehaviour
     public void ToLevel()
     {
         PlayerPrefs.SetString("inventory", inventory);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(PlayerPrefs.GetInt("level", 4));
     }
 }

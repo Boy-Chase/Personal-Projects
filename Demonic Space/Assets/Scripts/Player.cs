@@ -75,15 +75,15 @@ public class Player : MonoBehaviour
 
         if (level == 4)
         {
-            levelFinish = 600;
+            levelFinish = 550;
         }
         else if (level == 5)
         {
-            levelFinish = 600;
+            levelFinish = 750;
         }
         else if (level == 6)
         {
-            levelFinish = 600;
+            levelFinish = 1600;
         }
 
         // set demon time variables
