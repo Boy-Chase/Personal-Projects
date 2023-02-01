@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     public float shootCooldown;
     public GameObject bullet;
     
-    public int health;
+    public float health;
 
     // SFX
     public AudioClip shootSFX;
@@ -22,15 +22,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if (gameObject.tag == "boss")
         {
-            health = 50;
+            health = 50.0f;
         }
         else if (gameObject.tag == "follower")
         {
-            health = 10;
+            health = 10.0f;
         }
         else
         {
-            health = 7;
+            health = 7.0f;
         }
 
         shootCooldown = 0.0f;
@@ -126,7 +126,7 @@ public class EnemyMovement : MonoBehaviour
             // subtract health + destroy bullet
             if (other.tag == "bullet" && other.gameObject.GetComponent<Bullet>().playerMade)
             {
-                health--;
+                health -= Player.GetComponent<Player>().damage;
                 Destroy(other.gameObject);
             }
 

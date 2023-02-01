@@ -13,6 +13,9 @@ public class CutSceneScript : MonoBehaviour
     private bool win = false;
     private float winTimer = 0.0f;
 
+    public GameObject winPanel;
+    public GameObject shopPanel;
+
     public Text winText;
 
     int x = 0;
@@ -58,9 +61,11 @@ public class CutSceneScript : MonoBehaviour
                     winText.text = "Mission Complete! Score: " + PlayerPrefs.GetInt("score");
                 }
 
+                // change over ui
                 if (5f < winTimer)
                 {
-
+                    shopPanel.SetActive(false);
+                    shopPanel.SetActive(true);
                 }
             }
         }

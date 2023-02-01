@@ -2764,6 +2764,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landSFX: {fileID: 8300000, guid: be4eb35df0849dc48b26511372a8e8dd, type: 3}
   winSFX: {fileID: 8300000, guid: 1fd5899e90413f5488c38a9e539325f0, type: 3}
+  winPanel: {fileID: 217999276}
+  shopPanel: {fileID: 1750880020}
   winText: {fileID: 1478213272}
 --- !u!1 &1750880020
 GameObject:
@@ -2783,7 +2785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1750880021
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2824,7 +2826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2862,7 +2864,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   funds: 0
-  inventory: []
+  inventory: 
   fundsText: {fileID: 0}
 --- !u!1 &1830903534
 GameObject:

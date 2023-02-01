@@ -7,9 +7,15 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // health + score of the player
+    // health + score + level of the player
     public int health;
     public int score;
+    public int level;
+    public float damage;
+
+    // inventory
+    public string inventory;
+    private List<GameObject> probes = new List<GameObject>();
 
     // demon time variables
     public bool demonTimeActive;
@@ -50,6 +56,9 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        inventory = PlayerPrefs.GetString("inventory");
+        inventory = PlayerPrefs.GetString("inventory");
+
         gameObject.transform.Rotate(0, 90, 0);
         rot = gameObject.transform.rotation;
 
@@ -59,6 +68,8 @@ public class Player : MonoBehaviour
         iFrames = 3.0f;
         startLock = 3.0f;
         rollTime = 2.0f;
+        damage = 1.0f;
+        level = PlayerPrefs.GetInt("level", 4);
 
         // set demon time variables
         demonTimeActive = false;
@@ -74,11 +85,29 @@ public class Player : MonoBehaviour
 
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
+
+        // load in inventory 
+        foreach (char i in inventory)
+        {
+            if (i == 'b')
+            {
+                damage += 0.1f;
+            }
+            if (i == 'p')
+            {
+                if ()
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        foreach(GameObject p in probes)
+        {
+            p.gameObject.transform.position = new Vector3(p.gameObject.transform.position.x, p.gameObject.transform.position.y, gameObject.transform.position.z);
+        }
+
         // update all timers
         iFrames -= Time.deltaTime;
         startLock -= Time.deltaTime;
@@ -222,8 +251,11 @@ public class Player : MonoBehaviour
             // win condition
             if (1600.0f < gameObject.transform.position.z)
             {
+                level++;
                 score += health * 5;
+                PlayerPrefs.SetString("inventory", inventory);
                 PlayerPrefs.SetInt("score", score);
+                PlayerPrefs.SetInt("level", level);
                 SceneManager.LoadScene(3);
             }
         }

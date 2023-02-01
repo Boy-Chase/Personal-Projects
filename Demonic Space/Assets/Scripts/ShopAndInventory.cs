@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class ShopAndInventory : MonoBehaviour
 {
     public int funds = 0;
-    public List<string> inventory = new List<string>();
+    public string inventory;
     public Text fundsText;
 
     // Start is called before the first frame update
     void Start()
     {
         funds = PlayerPrefs.GetInt("score");
+        inventory = PlayerPrefs.GetString("inventory");
         fundsText.text = funds.ToString();
     }
 
@@ -28,7 +29,7 @@ public class ShopAndInventory : MonoBehaviour
         if (100 < funds)
         {
             funds -= 100;
-            inventory.Add("probe");
+            inventory += "ps";
         }
     }
 
@@ -37,7 +38,7 @@ public class ShopAndInventory : MonoBehaviour
         if (50 < funds)
         {
             funds -= 100;
-            inventory.Add("shield");
+            inventory += "s";
         }
     }
 
@@ -46,7 +47,7 @@ public class ShopAndInventory : MonoBehaviour
         if (10 < funds)
         {
             funds -= 100;
-            inventory.Add("blaster");
+            inventory += "b";
         }
     }
     public void buyThruster()
@@ -54,21 +55,22 @@ public class ShopAndInventory : MonoBehaviour
         if (10 < funds)
         {
             funds -= 100;
-            inventory.Add("thruster");
+            inventory += "t";
         }
     }
 
-    public void buyBeam()
+    public void buyLaser()
     {
         if (200 < funds)
         {
             funds -= 100;
-            inventory.Add("beam");
+            inventory += "l";
         }
     }
 
     public void ToLevel()
     {
+        PlayerPrefs.SetString("inventory", inventory);
         SceneManager.LoadScene(2);
     }
 }
