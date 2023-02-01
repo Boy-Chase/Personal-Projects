@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     // inventory
     public string inventory;
     private List<GameObject> probes = new List<GameObject>();
+    public GameObject probe;
 
     // demon time variables
     public bool demonTimeActive;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         inventory = PlayerPrefs.GetString("inventory");
-        inventory = PlayerPrefs.GetString("inventory");
+        // inventory = PlayerPrefs.GetString("inventory");
 
         gameObject.transform.Rotate(0, 90, 0);
         rot = gameObject.transform.rotation;
@@ -86,6 +87,8 @@ public class Player : MonoBehaviour
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
 
+        int ps = 0;
+
         // load in inventory 
         foreach (char i in inventory)
         {
@@ -95,7 +98,42 @@ public class Player : MonoBehaviour
             }
             if (i == 'p')
             {
-                if ()
+                GameObject p = Instantiate(probe);
+
+                if (ps == 0)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(-5, 0);
+                }
+                else if (ps == 1)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(5, 0);
+                }
+                else if (ps == 2)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(5, 0);
+                }
+                else if (ps == 3)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(0, -5);
+                }
+                else if (ps == 4)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(-2.5f, -2.5f);
+                }
+                else if (ps == 5)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(-2.5f, 2.5f);
+                }
+                else if (ps == 6)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(2.5f, 2.5f);
+                }
+                else if (ps == 7)
+                {
+                    p.GetComponent<Probe>().relXY = new Vector2(2.5f, -2.5f);
+                }
+                
+                ps++;
             }
         }
     }
@@ -105,7 +143,8 @@ public class Player : MonoBehaviour
     {
         foreach(GameObject p in probes)
         {
-            p.gameObject.transform.position = new Vector3(p.gameObject.transform.position.x, p.gameObject.transform.position.y, gameObject.transform.position.z);
+            // updates probe positions
+            p.gameObject.transform.position = new Vector3(gameObject.transform.position.z + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.z + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
         }
 
         // update all timers

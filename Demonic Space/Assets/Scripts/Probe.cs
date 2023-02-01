@@ -10,6 +10,8 @@ public class Probe : MonoBehaviour
     public float shootCooldown;
     public GameObject bullet;
 
+    public Vector2 relXY;
+
     // Start is called before the first frame update
     void Start()
     {
