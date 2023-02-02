@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private List<GameObject> probes = new List<GameObject>();
     public GameObject probe;
     public int ps;
+    public float ts;
 
     // demon time variables
     public bool demonTimeActive;
@@ -108,6 +109,9 @@ public class Player : MonoBehaviour
         // probe incrementer
         ps = 0;
 
+        // thruster incrementer
+        ts = 1.0f;
+
         // load in inventory 
         foreach (char i in inventory)
         {
@@ -115,6 +119,11 @@ public class Player : MonoBehaviour
             if (i == 'b')
             {
                 damage += 0.1f;
+            }
+            // thrustr upgrade decreases cooldown
+            if (i == 't')
+            {
+                ts += 0.1f;
             }
             // attack probes
             if (i == 'p')
@@ -286,7 +295,7 @@ public class Player : MonoBehaviour
             // if roll not happening, set rotation
             if (rollTime < 0.0f)
             {
-                rollTime -= Time.deltaTime;
+                rollTime -= Time.deltaTime * ts;
                 gameObject.transform.rotation = rot;
                 rollDir = "";
             }
