@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         }
         else if (level == 5)
         {
-            levelFinish = 750;
+            levelFinish = 850;
         }
         else if (level == 6)
         {
