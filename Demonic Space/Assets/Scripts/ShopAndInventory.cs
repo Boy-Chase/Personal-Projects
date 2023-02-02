@@ -13,17 +13,22 @@ public class ShopAndInventory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // get playerprefs
         funds = PlayerPrefs.GetInt("score");
         inventory = PlayerPrefs.GetString("inventory");
+
+        // set initial funds ui
         fundsText.text = funds.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // keep amount of funds current
         fundsText.text = funds.ToString();
     }
 
+    // button methods
     public void buyProbe()
     {
         if (20 < funds)

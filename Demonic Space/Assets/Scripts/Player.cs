@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // health + score + level of the player
+    // health + score + damage output + level of the player + where they finish
     public int health;
     public int score;
     public int level;
     public int levelFinish;
     public float damage;
 
-    // inventory
+    // inventory related variables
     public string inventory;
     private List<GameObject> probes = new List<GameObject>();
     public GameObject probe;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     // bullet prefab
     public GameObject bullet;
 
-    // game camera
+    // game camera 
     public Camera myCamera;
     private List<Vector2> pastPositionsXY = new List<Vector2>();
 
@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     public GameObject backGround;
     public GameObject stars;
 
+    // roll variables
     public float iFrames;
     private float startLock;
     public float rollTime;
@@ -59,13 +60,14 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        // get player inventory
         inventory = PlayerPrefs.GetString("inventory");
-        // inventory = PlayerPrefs.GetString("inventory");
 
+        // set roations
         gameObject.transform.Rotate(0, 90, 0);
         rot = gameObject.transform.rotation;
 
-        // set health + score + invincibilty + control lock
+        // set player level starting variable values
         health = 3;
         score = 0;
         iFrames = 3.0f;
@@ -74,6 +76,7 @@ public class Player : MonoBehaviour
         damage = 1.0f;
         level = PlayerPrefs.GetInt("level", 4);
 
+        // set where this level will end
         if (level == 4)
         {
             levelFinish = 550;
@@ -102,34 +105,39 @@ public class Player : MonoBehaviour
         // all bullets in this script are made by the Player (not an enemy)
         bullet.GetComponent<Bullet>().playerMade = true;
 
+        // probe incrementer
         ps = 0;
 
         // load in inventory 
         foreach (char i in inventory)
         {
+            // blaster upgrade increases damage
             if (i == 'b')
             {
                 damage += 0.1f;
             }
+            // attack probes
             if (i == 'p')
             {
+                // make one
                 GameObject p = Instantiate(probe);
 
+                // give it a position relative to player
                 if (ps == 0)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(-3, 0);
+                    p.GetComponent<Probe>().relXY = new Vector2(-2.5f, 0);
                 }
                 else if (ps == 1)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(3, 0);
+                    p.GetComponent<Probe>().relXY = new Vector2(2.5f, 0);
                 }
                 else if (ps == 2)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(3, 0);
+                    p.GetComponent<Probe>().relXY = new Vector2(0, 2.5f);
                 }
                 else if (ps == 3)
                 {
-                    p.GetComponent<Probe>().relXY = new Vector2(0, -3);
+                    p.GetComponent<Probe>().relXY = new Vector2(0, -2.5f);
                 }
                 else if (ps == 4)
                 {
@@ -148,6 +156,7 @@ public class Player : MonoBehaviour
                     p.GetComponent<Probe>().relXY = new Vector2(2.5f, -2.5f);
                 }
 
+                // add it to list + increment
                 probes.Add(p);
                 ps++;
             }
@@ -157,6 +166,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // for every probe the player has
         foreach(GameObject p in probes)
         {
             // updates probe positions

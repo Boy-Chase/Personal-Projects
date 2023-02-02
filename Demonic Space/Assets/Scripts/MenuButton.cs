@@ -12,8 +12,11 @@ public class MenuButton : MonoBehaviour
     // goes to testing level
     public void ToLevel()
     {
+        // set starting prefs
         PlayerPrefs.SetString("inventory", "");
         PlayerPrefs.SetInt("level", 4);
+
+        // load in new scene
         SceneManager.LoadScene(sceneInt);
     }
 }
