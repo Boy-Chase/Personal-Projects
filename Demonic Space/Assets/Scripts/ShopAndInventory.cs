@@ -31,7 +31,7 @@ public class ShopAndInventory : MonoBehaviour
     // button methods
     public void buyProbe()
     {
-        if (20 < funds)
+        if (25 < funds)
         {
             funds -= 25;
             inventory += "p";
@@ -40,7 +40,7 @@ public class ShopAndInventory : MonoBehaviour
 
     public void buyShield()
     {
-        if (50 < funds)
+        if (20 < funds)
         {
             funds -= 20;
             inventory += "s";
@@ -51,7 +51,7 @@ public class ShopAndInventory : MonoBehaviour
     {
         if (10 < funds)
         {
-            funds -= 100;
+            funds -= 10;
             inventory += "b";
         }
     }
@@ -59,7 +59,7 @@ public class ShopAndInventory : MonoBehaviour
     {
         if (10 < funds)
         {
-            funds -= 100;
+            funds -= 10;
             inventory += "t";
         }
     }
@@ -68,7 +68,7 @@ public class ShopAndInventory : MonoBehaviour
     {
         if (200 < funds)
         {
-            funds -= 100;
+            funds -= 200;
             inventory += "l";
         }
     }

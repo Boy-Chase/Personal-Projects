@@ -22,15 +22,15 @@ public class EnemyMovement : MonoBehaviour
     {
         if (gameObject.tag == "boss")
         {
-            health = 50.0f;
+            health = 70.0f;
         }
         else if (gameObject.tag == "follower")
         {
-            health = 10.0f;
+            health = 15.0f;
         }
         else
         {
-            health = 7.0f;
+            health = 10.0f;
         }
 
         shootCooldown = 0.0f;
