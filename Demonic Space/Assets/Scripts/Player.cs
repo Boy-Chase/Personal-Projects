@@ -18,14 +18,27 @@ public class Player : MonoBehaviour
     public string inventory;
     private List<GameObject> probes = new List<GameObject>();
     public GameObject probe;
+    public GameObject shield;
     public int ps;
     public float ts;
+    public float ss;
 
     // demon time variables
     public bool demonTimeActive;
     public int demonTimeUses;
     private float demonTimeTimer;
     public int demonTimeIncrementer;
+
+    // roll variables
+    public float iFrames;
+    private float startLock;
+    public float rollTime;
+    public string rollDir;
+    public Quaternion rot;
+
+    // shield variables
+    public bool shieldOut;
+    public float sTimer;
 
     // current position of the ship
     public Vector3 position;
@@ -43,13 +56,6 @@ public class Player : MonoBehaviour
     // game background + stars
     public GameObject backGround;
     public GameObject stars;
-
-    // roll variables
-    public float iFrames;
-    private float startLock;
-    public float rollTime;
-    public string rollDir;
-    public Quaternion rot;
 
     // sound
     // from: https://omegaosg.itch.io/gameboy-sfx-pack
@@ -112,6 +118,10 @@ public class Player : MonoBehaviour
         // thruster incrementer
         ts = 1.0f;
 
+        // shield cooldown incrementer
+        ss = 20.0f;
+        sTimer = 20.0f;
+
         // load in inventory 
         foreach (char i in inventory)
         {
@@ -120,10 +130,15 @@ public class Player : MonoBehaviour
             {
                 damage += 0.1f;
             }
-            // thrustr upgrade decreases cooldown
+            // thruster upgrade decreases cooldown
             if (i == 't')
             {
                 ts += 0.1f;
+            }
+            // shield upgrades load in
+            if (i == 's')
+            {
+                ss -= 2.0f;
             }
             // attack probes
             if (i == 'p')
@@ -180,6 +195,18 @@ public class Player : MonoBehaviour
         {
             // updates probe positions
             p.gameObject.transform.position = new Vector3(gameObject.transform.position.x + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.y + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
+        }
+
+        if (ss != 20.0f && !shieldOut)
+        {
+            sTimer -= Time.deltaTime;
+
+            if (sTimer < 0)
+            {
+                // make one
+                GameObject s = Instantiate(shield);
+                shieldOut = true;
+            }
         }
 
         // update all timers

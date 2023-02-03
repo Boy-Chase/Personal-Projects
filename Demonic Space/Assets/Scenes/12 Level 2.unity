@@ -222,6 +222,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 871466242}
     - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 6634448920488652912, guid: 4960d1e52fa0fb241a8dc17a55b331f1, type: 3}
+    - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: hurtSFX
       value: 
       objectReference: {fileID: 8300000, guid: 976365627b4427e4694003f0d282751c, type: 3}

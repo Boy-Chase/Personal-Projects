@@ -29,7 +29,7 @@ public class Probe : MonoBehaviour
         shootCooldown += Time.deltaTime;
 
         // if cooldown is greater than sec, fire a bullet
-        if (2.0f < shootCooldown)
+        if (1.5f < shootCooldown)
         {
             Instantiate(bullet, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), new Quaternion(gameObject.transform.rotation.x - 90, gameObject.transform.rotation.y, gameObject.transform.rotation.z, 1));
             bullet.GetComponent<Bullet>().playerMade = true;

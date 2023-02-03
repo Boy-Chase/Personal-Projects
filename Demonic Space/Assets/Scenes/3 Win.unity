@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 112108384}
   - component: {fileID: 112108383}
   m_Layer: 5
-  m_Name: 'B Demon Beam (Unlock) '
+  m_Name: B Demon Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,7 +1115,7 @@ GameObject:
   - component: {fileID: 697963962}
   - component: {fileID: 697963961}
   m_Layer: 5
-  m_Name: B Attack Probe (Stackable)
+  m_Name: B Attack Probe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,7 +1343,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Demon Beam (Unlock)
+  m_Text: Demon Beam (Not In)
 --- !u!222 &712379276
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1612,7 +1612,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Attack Probe (Stackable)
+  m_Text: Attack Probe - 25
 --- !u!222 &812878516
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2118,7 +2118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Blaster Refiner
+  m_Text: Blaster Refiner - 15
 --- !u!222 &1146468078
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3031,7 +3031,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thruster Grease
+  m_Text: Thruster Grease - 10
 --- !u!222 &1871773084
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3053,7 +3053,7 @@ GameObject:
   - component: {fileID: 1981159714}
   - component: {fileID: 1981159713}
   m_Layer: 5
-  m_Name: 'B Shields (Unlock) '
+  m_Name: B Shields
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3322,7 +3322,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Shields (Unlock)
+  m_Text: Shields - 20
 --- !u!222 &2080002588
 CanvasRenderer:
   m_ObjectHideFlags: 0

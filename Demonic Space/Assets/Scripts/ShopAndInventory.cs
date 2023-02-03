@@ -33,7 +33,7 @@ public class ShopAndInventory : MonoBehaviour
     {
         if (20 < funds)
         {
-            funds -= 20;
+            funds -= 25;
             inventory += "p";
         }
     }
@@ -42,7 +42,7 @@ public class ShopAndInventory : MonoBehaviour
     {
         if (50 < funds)
         {
-            funds -= 100;
+            funds -= 20;
             inventory += "s";
         }
     }
