@@ -64,7 +64,7 @@ public class CutSceneScript : MonoBehaviour
                 // change over ui
                 if (5f < winTimer)
                 {
-                    shopPanel.SetActive(false);
+                    winPanel.SetActive(false);
                     shopPanel.SetActive(true);
                 }
             }
