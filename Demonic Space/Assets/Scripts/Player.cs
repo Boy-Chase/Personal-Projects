@@ -197,6 +197,7 @@ public class Player : MonoBehaviour
             p.gameObject.transform.position = new Vector3(gameObject.transform.position.x + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.y + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
         }
 
+        // manage shield
         if (ss != 20.0f && !shieldOut)
         {
             sTimer -= Time.deltaTime;
