@@ -216,6 +216,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
+      propertyPath: laser
+      value: 
+      objectReference: {fileID: 4304602741641154879, guid: 17dbc943e422f48408c7b36b34aead71, type: 3}
+    - target: {fileID: 7636783071858456712, guid: 43dbb303ee1671b4783051fe49f2d647, type: 3}
       propertyPath: probe
       value: 
       objectReference: {fileID: 5517548487228702745, guid: 05a24371e7a64e14885968b39d1c2c51, type: 3}

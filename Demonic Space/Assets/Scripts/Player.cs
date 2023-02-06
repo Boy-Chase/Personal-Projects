@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     private List<GameObject> probes = new List<GameObject>();
     public GameObject probe;
     public GameObject shield;
+    public GameObject laser;
     public int ps;
     public float ts;
     public float ss;
@@ -39,6 +40,9 @@ public class Player : MonoBehaviour
     // shield variables
     public bool shieldOut;
     public float sTimer;
+
+    // laser variables
+    public float laserTimer;
 
     // current position of the ship
     public Vector3 position;
@@ -81,6 +85,7 @@ public class Player : MonoBehaviour
         startLock = 3.0f;
         rollTime = 2.0f;
         damage = 1.0f;
+        laserTimer = 0.0f;
         level = PlayerPrefs.GetInt("level", 4);
 
         // set where this level will end
@@ -129,6 +134,11 @@ public class Player : MonoBehaviour
             if (i == 'b')
             {
                 damage += 0.1f;
+            }
+            // laser bought
+            if (i == 'l')
+            {
+                laserTimer = 10.0f;
             }
             // thruster upgrade decreases cooldown
             if (i == 't')
@@ -196,6 +206,21 @@ public class Player : MonoBehaviour
             // updates probe positions
             p.gameObject.transform.position = new Vector3(gameObject.transform.position.x + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.y + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
         }
+
+        if(health == 1)
+        {
+            if (0.0f < laserTimer)
+            {
+                laser.SetActive(true);
+                laser.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 10);
+                laserTimer -= Time.deltaTime;
+            }
+            else if (laserTimer < 0.0f)
+            {
+                laser.SetActive(false);
+            }
+        }
+
 
         // manage shield
         if (ss != 20.0f && !shieldOut)

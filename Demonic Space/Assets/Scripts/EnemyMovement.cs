@@ -112,6 +112,11 @@ public class EnemyMovement : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "laser")
+        {
+            health--;
+        }
+
         if (other.gameObject.tag == "bullet")
         {
             if (other.GetComponent<Bullet>().playerMade)

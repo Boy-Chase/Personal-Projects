@@ -303,7 +303,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1750880024}
         m_TargetAssemblyTypeName: ShopAndInventory, Assembly-CSharp
-        m_MethodName: buyBeam
+        m_MethodName: buyLaser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1343,7 +1343,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Demon Beam (Not In)
+  m_Text: Demon Beam - 75
 --- !u!222 &712379276
 CanvasRenderer:
   m_ObjectHideFlags: 0

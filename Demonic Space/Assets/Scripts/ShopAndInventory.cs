@@ -66,9 +66,9 @@ public class ShopAndInventory : MonoBehaviour
 
     public void buyLaser()
     {
-        if (200 < funds)
+        if (75 < funds)
         {
-            funds -= 200;
+            funds -= 75;
             inventory += "l";
         }
     }

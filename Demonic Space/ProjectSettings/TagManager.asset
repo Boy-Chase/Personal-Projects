@@ -13,6 +13,7 @@ TagManager:
   - health
   - ring
   - probe
+  - laser
   layers:
   - Default
   - TransparentFX
