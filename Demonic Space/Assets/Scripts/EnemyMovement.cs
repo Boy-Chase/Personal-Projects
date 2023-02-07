@@ -114,7 +114,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "laser")
         {
-            health--;
+            health -= 10;
         }
 
         if (other.gameObject.tag == "bullet")

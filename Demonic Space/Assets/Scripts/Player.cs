@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public GameObject probe;
     public GameObject shield;
     public GameObject laser;
+    public GameObject laserOut;
     public int ps;
     public float ts;
     public float ss;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
 
     // laser variables
     public float laserTimer;
+    public bool laserActivated;
 
     // current position of the ship
     public Vector3 position;
@@ -87,6 +89,8 @@ public class Player : MonoBehaviour
         damage = 1.0f;
         laserTimer = 0.0f;
         level = PlayerPrefs.GetInt("level", 4);
+        laserOut = null;
+        laserActivated = false;
 
         // set where this level will end
         if (level == 4)
@@ -207,20 +211,22 @@ public class Player : MonoBehaviour
             p.gameObject.transform.position = new Vector3(gameObject.transform.position.x + p.GetComponent<Probe>().relXY.x, gameObject.transform.position.y + p.GetComponent<Probe>().relXY.y, gameObject.transform.position.z - 2);
         }
 
-        if(health == 1)
+        // handles laser
+        if (health == 1 && !laserActivated && laserTimer == 10.0f)
         {
-            if (0.0f < laserTimer)
-            {
-                laser.SetActive(true);
-                laser.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 10);
-                laserTimer -= Time.deltaTime;
-            }
-            else if (laserTimer < 0.0f)
-            {
-                laser.SetActive(false);
-            }
+            laserOut = Instantiate(laser);
+            laserActivated = true;
         }
-
+        if (laserActivated)
+        {
+            laserOut.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z + 15);
+            laserTimer -= Time.deltaTime;
+        }
+        if (laserTimer < 0.0f)
+        {
+            Destroy(laserOut);
+            laserActivated = false;
+        }
 
         // manage shield
         if (ss != 20.0f && !shieldOut)
